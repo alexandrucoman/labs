@@ -132,7 +132,7 @@ Folosing **dictionary comprehension**
     >>> del d[1]
     >>> print(d)
     {'key1': 'value3', 'new': 'value', 'key2': 1}
-
+    
     >>> # Ștergerea tuturor elementelor
     >>> d.clear()
     {}
