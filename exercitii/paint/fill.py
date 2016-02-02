@@ -25,13 +25,8 @@ umplem formele în care se află "x":
 
 
 def umple(imagine, punct):
-    """Funcția primește reprezentarea imaginii și coordonatele unui
-    punct.
 
-    În cazul în care punctul se află într-o formă închisă trebuie să
-    umple forma respectivă cu caracterul "*"
-    """
-    pass
+    pas
 
 
 def main():

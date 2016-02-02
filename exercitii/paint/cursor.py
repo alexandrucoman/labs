@@ -26,10 +26,24 @@ punctul de origine (0, 0) și poziția curentă a cursorului.
 
 
 def distanta():
-    """Funcția citește conținutul fișierului istoric.tuxy și
-    calculează distanța dintre punctul de origine și poziția
-    curentă a cursorului.
-    """
+    x = 0
+    y = 0
+    istoric = open("istoric.tuxy", 'r')
+    com_string = istoric.read()
+    comenzi = com_string.strip().split('\n')
+    for comanda in comenzi:
+        directia = comanda.strip().split(' ')[0].lower()
+        distanta = int(comanda.strip().split(' ')[1])
+        if directia == "jos":
+            y-=distanta
+        if directia == "sus":
+            y+=distanta
+        if directia == "STaNGA".lower():
+            x-=distanta
+        if directia == "dreapta":
+            x+=distanta
+    distance = (x*x+y*y)**0.5
+    print distance
     pass
 
 

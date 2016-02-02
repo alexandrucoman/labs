@@ -18,18 +18,10 @@ Cerințe:
     II. Găsește cercetătorul ce stă peste program după o singură
     parcurgere a listei și fără a aloca memorie suplimentară.
 """
-
+import operator
 
 def gaseste(istoric):
-    """Funcția primește o listă cu elemente numerice și trebuie
-    să returneze elementul care nu este duplicat.
-
-    Exemple:
-        1 2 3 2 1 - 3
-        1 1 1 2 2 - 1
-    """
-    pass
-
+    return reduce(operator.xor,istoric)
 
 if __name__ == "__main__":
     assert gaseste([1, 2, 3, 2, 1]) == 3
