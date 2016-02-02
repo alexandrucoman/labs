@@ -20,6 +20,8 @@ def decripteaza(mesaj):
     n=ord(mesaj[0])-ord("a")
     mesajDecriptat=list(mesaj)
     for i in range(0,len(mesaj)):
+        if ord(mesajDecriptat[i])-n<97:
+            print("mai mic ca a")
         if (mesajDecriptat[i]==' ') | (mesajDecriptat[i]=='.') | (mesajDecriptat[i]==','):
             pass
         else: mesajDecriptat[i]=chr(ord(mesajDecriptat[i])-n)
