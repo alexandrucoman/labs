@@ -41,8 +41,8 @@ def din_icao(fisier_intrare):
                     result.append(' ')
                     continue
         result.append('\n')
-    file_to_write = open("mesajfrom.icao", 'w')
+    file_to_write = open("icao_intrare", 'w')
     file_to_write.write(''.join(result))
 
 if __name__ == "__main__":
-    din_icao("mesajto.icao")
+    din_icao("mesaj.icao")

@@ -29,14 +29,16 @@ ICAO = {
 }
 
 
-def icao(mesaj):
+def icao(fisier):
     result = []
+    mesaj = fisier.read()
     for linii in mesaj.split('\n'):
         lista = linii.lower().strip().split(" ")
         for cuvant in lista:
             for abr, word in ICAO.iteritems():
                 if cuvant.strip().lower() == word:
                     result.append(abr)
+                    result.append(',')
                     continue
         result.append('\n')
     fin = open("mesajto.icao", 'w')
@@ -44,5 +46,5 @@ def icao(mesaj):
 
 
 if __name__ == "__main__":
-    a = open("mesaj.icao", 'r')
-    icao(a.read())
+    a = open("icao_intrare", 'r')
+    icao(a)
