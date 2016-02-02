@@ -30,11 +30,13 @@ ICAO = {
 
 
 def icao(mesaj):
-    """Funcția va primi calea mesajul ce trebuie transmis și
-    va genera un fișier numit mesaj.icao_intrare ce va conține
-    mesajul scris folosind alfabetul ICAO.
-    """
-    pass
+    encoded = ""
+    for i in range(len(mesaj)):
+        if mesaj[i].isalpha():
+            encoded += ICAO[mesaj[i].lower()] + " "
+        if mesaj[i] == ' ':
+            encoded += '\n'
+    print encoded
 
 
 if __name__ == "__main__":
