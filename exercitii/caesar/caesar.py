@@ -18,14 +18,14 @@ letters = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
 print len(letters)
 print letters[26]
 
+# tot timpul se va gasi litera in string-ul "letters", deci circularitatea e suficient
+# reprezentata prin a-z de doua ori
 def shiftLetter(l, n):
-    if l.isalpha():
-        for i in range(26):
-            if l == letters[i]:
-                break
-        return letters[i+n]
+    if l.isalpha():                             # procesam doar literele
+        return letters[ord(l) - 97 + n]         # returnam litera de peste n locuri in letters
+
     else:
-        return l
+        return l                                # daca nu e litera, returnam caracterul original
 
 def decripteaza(mesaj, n):
     newMsg = ""
