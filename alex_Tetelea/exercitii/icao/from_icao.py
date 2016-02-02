@@ -33,12 +33,14 @@ def din_icao(fisier_intrare):
     result = []
     readFile = open(fisier_intrare, 'r')
     mesaj = readFile.read()
-    for litera in mesaj:
-        for abr, word in ICAO.iteritems():
-            if litera.lower() == abr:
-                result.append(word)
-                result.append(' ')
-                continue
+    for kk in mesaj.split('\n'):
+        for litera in mesaj:
+            for abr, word in ICAO.iteritems():
+                if litera.lower() == abr:
+                    result.append(word)
+                    result.append(' ')
+                    continue
+        result.append('\n')
     file_to_write = open("mesajfrom.icao", 'w')
     file_to_write.write(''.join(result))
 
