@@ -21,8 +21,23 @@ Câteva exemple:
 
 
 def este_corect(expresie):
-    """Verifică dacă toate parantezele sunt folosite corespunzător."""
-    pass
+    n = len(expresie)
+    while True:
+        for i in xrange(len(expresie) - 1):
+            if expresie[i] == '[' and expresie[i + 1] == ']' or expresie[i] == '{' and expresie[i + 1] == '}' or \
+                                    expresie[i] == '(' and expresie[i + 1] == ')':
+                expresie = expresie[:i] + expresie[(i+2):]
+                break
+        if len(expresie)<1:
+            break
+        if n == len(expresie):
+            return False
+        n = len(expresie)
+
+    if len(expresie)>0:
+        return False
+    else:
+        return True
 
 
 if __name__ == "__main__":

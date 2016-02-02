@@ -24,6 +24,8 @@ def decripteaza(mesaj):
             for j in xrange(len(mesaj)):
                 if mesaj[j]==' ':
                     mesaj2[j] = ' '
+                if not mesaj2[j].isalpha():
+                    mesaj2[j] = ' '
             print mesaj2
 
 
