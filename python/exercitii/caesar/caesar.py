@@ -15,8 +15,6 @@ la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 """
 
 letters = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
-print len(letters)
-print letters[26]
 
 # tot timpul se va gasi litera in string-ul "letters", deci circularitatea e suficient
 # reprezentata prin a-z de doua ori
@@ -43,8 +41,6 @@ def main():
     except IOError:
         print("Nu am putut obține mesajele.")
         return
-
-    print mesaje.splitlines()
 
     for mesaj in mesaje.splitlines():
         for i in range(26):
