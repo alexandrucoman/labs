@@ -15,20 +15,17 @@ la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 """
 
 
-
 def decripteaza(mesaj):
-    n=ord(mesaj[0])-ord("a")
-    mesajDecriptat=list(mesaj)
-    for i in range(0,len(mesaj)):
-        if ord(mesajDecriptat[i])-n<97:
-            print("mai mic ca a")
-        if (mesajDecriptat[i]==' ') | (mesajDecriptat[i]=='.') | (mesajDecriptat[i]==','):
-            pass
-        else: mesajDecriptat[i]=chr(ord(mesajDecriptat[i])-n)
+    n = (ord(mesaj[0])-ord("a"))
+    mesajDecriptat = list(mesaj)
+    for i in range(0, len(mesaj)):
+        if mesajDecriptat[i].isalpha():
+            if ord(mesajDecriptat[i])-n < 97:
+                mesajDecriptat[i] = chr(ord(mesajDecriptat[i])+26)
+            mesajDecriptat[i] = chr(abs(ord(mesajDecriptat[i])-n))
     mesajString=''.join(mesajDecriptat)
     print(mesajString)
     pass
-
 
 def main():
     try:
