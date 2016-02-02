@@ -14,12 +14,25 @@ un mesaj prin înlocuirea fiecărei litere cu litera de pe poziția aflată
 la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 """
 
+letters = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+print len(letters)
+print letters[26]
 
-def decripteaza(mesaj):
-    """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
-    va încearca să îl decripteze.
-    """
-    pass
+def shiftLetter(l, n):
+    if l.isalpha():
+        for i in range(26):
+            if l == letters[i]:
+                break
+        return letters[i+n]
+    else:
+        return l
+
+def decripteaza(mesaj, n):
+    newMsg = ""
+    for i in range (len(mesaj)):
+        newMsg += shiftLetter(mesaj[i], n)
+    if "ave" in newMsg:
+        print newMsg
 
 
 def main():
@@ -31,8 +44,11 @@ def main():
         print("Nu am putut obține mesajele.")
         return
 
+    print mesaje.splitlines()
+
     for mesaj in mesaje.splitlines():
-        decripteaza(mesaj)
+        for i in range(26):
+            decripteaza(mesaj, i)
 
 if __name__ == "__main__":
     main()
