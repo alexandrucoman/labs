@@ -29,11 +29,27 @@ ICAO = {
 }
 
 
+# ICAO -> brut
+
+# Funcția va primi calea către fișierul ce conține mesajul brut și
+# va genera un fișier numit icao_intrare ce va conține mesajul inițial.
+
+
 def din_icao(fisier_intrare):
-    """Funcția va primi calea către fișierul ce conține mesajul brut și
-    va genera un fișier numit icao_intrare ce va conține mesajul inițial.
-    """
-    pass
+    decoded = ""
+    raw = open(fisier_intrare).read()
+    for line in raw.splitlines():
+        if not line:
+            continue
+        decoded += line[0]
+        for i in range(1, len(line)):
+            if line[i].isalpha() and not line[i - 1].isalpha():
+                decoded += line[i]
+
+        decoded += '\n'
+
+    print decoded
+
 
 if __name__ == "__main__":
     din_icao("mesaj.icao")
