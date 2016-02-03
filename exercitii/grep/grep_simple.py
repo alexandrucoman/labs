@@ -35,7 +35,9 @@ el doreste sa implementeze un utilitar inteligent de cautat formule.
 Functionalitatile care doreste sa le implementeze sunt:
     [1] cautare indiferent de caz (ex. 'a'=='A' ) [-i]
     [2] cautare exacta ( nu ia in considere parti ale cuvintelor) [-e] 
-    [3] cautare si schimbare a sirurilor de caractere [-s]
+    [3] cautare si inlocuire a sirurilor de caractere [-s]
+    Ex: python utilitar.py -s "CARD" "CARDINAL"
+    fiecare sir "CARD" a fost inlocuit cu "CARDINAL"
     [4] numararea aparitiilor unui sir de caractere [-n]
     [5] cautare recursiva a fisierelor prin director [-r]
     [6] introducerea parametrilor din linia de comanda:

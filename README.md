@@ -28,12 +28,14 @@ Acest depozit de cod conține o serie de exerciții ce pot fi folosite în cadru
 ###Exerciții propuse
 
 - [caesar](exercitii/caesar)
-    - Dificultatea: scăzută
+    - Dificultate: scăzută
 - [icao](exercitii/icao)
     - Dificultate: scăzută
 - [unic](exercitii/unic)
     - Dificultate: scăzută
 - [paint](exercitii/paint)
-    - Dificultatea: medie
+    - Dificultate: medie
 - [paranteze](exercitii/paranteze)
-    - Dificutate: medie
+    - Dificultate: medie
+- [grep](exercitii/grep)
+    - Dificultate: medie
