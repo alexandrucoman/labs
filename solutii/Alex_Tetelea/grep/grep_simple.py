@@ -27,7 +27,6 @@ Exemplu:
 
 
 """
-import os
 
 """
 Stiind limbajul de programare python si fiind un fan al liniei de comanda,
@@ -59,11 +58,12 @@ Posibila documentatie:
     - https://github.com/heyhuyen/python-grep
 """
 import re
-
+import os
 import sys, getopt
 
 
-def search2(message, caseSensitive, Exact=False, find_str="", shouldReplace=False, replaceable="", count=False):
+def search2(src, caseSensitive, Exact=False, find_str="", shouldReplace=False, replaceable="", n=False):
+    message = src.read()
     allTeorems = []
     message.split()
     lista = re.split('\d+\.  ', message)
@@ -81,12 +81,12 @@ def search2(message, caseSensitive, Exact=False, find_str="", shouldReplace=Fals
             if Exact:
                 a = re.findall("\s" + find_str + "\s", teorema["Tot_mesajul"])
             else:
-                a = re.findall(".+" + find_str + ".+", teorema["Tot_mesajul"])
+                a = re.findall(find_str, teorema["Tot_mesajul"])
         else:
             if Exact:
                 a = re.findall("\s" + find_str + "\s", teorema["Tot_mesajul"], re.IGNORECASE)
             else:
-                a = re.findall(".+" + find_str + ".+", teorema["Tot_mesajul"], re.IGNORECASE)
+                a = re.findall(find_str, teorema["Tot_mesajul"], re.IGNORECASE)
         if len(a) > 0:
             count += len(a)
             good_Theorems.append(teorema)
@@ -97,20 +97,34 @@ def search2(message, caseSensitive, Exact=False, find_str="", shouldReplace=Fals
         else:
             for teorema in good_Theorems:
                 print teorema["Nume_complet"], teorema["Nume_scurt"]
-    message = message.replace(find_str, replaceable)
+
     if shouldReplace:
-        if not caseSensitive:
+        if caseSensitive:
             insensitive_hippo = re.compile(re.escape(find_str))
-            insensitive_hippo.sub(replaceable, message)
+            if Exact:
+                message = insensitive_hippo.sub("\s" + replaceable + "\s", message)
+            else:
+                message = insensitive_hippo.sub(replaceable, message)
+
         else:
             insensitive_hippo = re.compile(re.escape(find_str), re.IGNORECASE)
-            insensitive_hippo.sub(replaceable, message)
-    if count:
+            if Exact:
+                message = insensitive_hippo.sub("\s" + replaceable + "\s", message)
+            else:
+                message = insensitive_hippo.sub(replaceable, message)
+        src.seek(0)
+        src.write(message)
+        src.truncate()
+        src.close()
+    if n:
         print count
     pass
 
 
 def main(argv):
+    if len(argv) == 0:
+        print 'grep_simple.py [-i - case insensitive] [-e - exact] [-s - replace] [-n - count] [-r] [Folder_name] | [file_name]'
+        sys.exit()
     try:
         opts = ' '.join(argv).split(' ')[0]
     except getopt.GetoptError:
@@ -137,35 +151,31 @@ def main(argv):
             n = True
         elif opt in ("r"):
             r = True
-        elif opt in ("-h"):
-            print 'test.py -i <inputfile> -o <outputfile>'
+        elif opt in ("h"):
+            print 'grep_simple.py [-i - case insensitive] [-e - exact] [-s - replace] [-n - count] [-r] [Folder_name] | [file_name]'
     phrase = ""
     replace = ""
 
     if not r:
-        if not n:
+        if not s:
             phrase = argv[-2]
         else:
             replace = argv[-2]
             phrase = argv[-3]
-        read_file = open(argv[-1], 'r')
-        message = read_file.read()
+        read_file = open(argv[-1], 'r+')
         phrase = phrase.translate(None, ''.join(['.', '\'', '"']))
-        search2(message, not i, e, phrase, s, replace, n)
+        search2(read_file, not i, e, phrase, s, replace, n)
     else:
-        if not n:
+        if not s:
             phrase = argv[-2]
         else:
             replace = argv[-2]
             phrase = argv[-3]
         for folder, subs, files in os.walk(argv[-1]):
             for filename in files:
-                with open(os.path.join(folder, filename), 'r') as src:
-                    print filename
-                    message = src.read()
+                with open(os.path.join(folder, filename), 'r+') as src:
                     phrase = phrase.translate(None, ''.join(['.', '\'', '"']))
-                    search2(message, not i, e, phrase, s, replace, n)
-    sys.exit(2)
+                    search2(src, not i, e, phrase, s, replace, n)
 
 
 if __name__ == "__main__":
