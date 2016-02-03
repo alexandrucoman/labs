@@ -30,10 +30,17 @@ ICAO = {
 
 
 def din_icao(fisier_intrare):
-    """Funcția va primi calea către fișierul ce conține mesajul brut și
-    va genera un fișier numit icao_intrare ce va conține mesajul inițial.
-    """
-    pass
+    result = []
+    readFile = open(fisier_intrare, 'r')
+    mesaj = readFile.read()
+    for litera in mesaj:
+        for abr, word in ICAO.iteritems():
+            if litera.lower() == abr:
+                result.append(word)
+                result.append(' ')
+                continue
+    file_to_write = open("mesajfrom.icao", 'w')
+    file_to_write.write(''.join(result))
 
 if __name__ == "__main__":
-    din_icao("mesaj.icao")
+    din_icao("mesajto.icao")

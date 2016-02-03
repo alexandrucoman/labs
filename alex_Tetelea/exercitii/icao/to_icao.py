@@ -29,18 +29,22 @@ ICAO = {
 }
 
 
-def icao(mesaj):
-    lista = mesaj.lower().replace('\n', ' ').strip().split(" ")
+def icao(fisier):
     result = []
-    for cuvant in lista:
-        for abr, word in ICAO.iteritems():
-            if cuvant.strip().lower() == word:
-                result.append(abr)
-                continue
-    fin = open("mesajto.icao",'w')
+    mesaj = fisier.read()
+    for linii in mesaj.split('\n'):
+        lista = linii.lower().strip().split(" ")
+        for cuvant in lista:
+            for abr, word in ICAO.iteritems():
+                if cuvant.strip().lower() == word:
+                    result.append(abr)
+                    result.append(',')
+                    continue
+        result.append('\n')
+    fin = open("mesajto.icao", 'w')
     fin.write(''.join(result))
 
-if __name__ == "__main__":
-    a = open("mesaj.icao", 'r')
-    icao(a.read())
 
+if __name__ == "__main__":
+    a = open("icao_intrare", 'r')
+    icao(a)
