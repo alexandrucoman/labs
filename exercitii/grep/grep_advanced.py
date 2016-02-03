@@ -4,7 +4,7 @@
 
 """
 
-Nu a durat mult pana Tuxy nu a fost multumit de utilitarul creat anterior.
+Nu a durat mult pana cand Tuxy nu a fost multumit de utilitarul creat anterior.
 Acum el doreste cateva functionalitati in plus:
     [1] Afisarea fisierului si liniei in care se afla textul cautat [implicit]
     ex: [nume fisier]:[numar linie]:[linia cu textul cautat]
