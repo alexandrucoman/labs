@@ -3,7 +3,6 @@
 
 
 """
-
 Nu a durat mult pana cand Tuxy nu a fost multumit de utilitarul creat anterior.
 Acum el doreste cateva functionalitati in plus:
     [1] Afisarea fisierului si liniei in care se afla textul cautat [implicit]
@@ -27,5 +26,4 @@ Acum el doreste cateva functionalitati in plus:
         '4': 'rocket',
         '5': 'surgeon'
         }
-
 """

@@ -2,7 +2,6 @@
 # *-* coding: UTF-8 *-*
 
 """
-
 Tuxy cauta in fiecare zi cate o problema de matematica complet noua pentru el.
 
 Rezolvand problema 101, a observat ca are nevoie de cateva formule mai vechi.
@@ -52,7 +51,6 @@ teoreme, utilitarul returneaza doar numele complet si cel scurt al teoremelor.
 
 
 """
-
 Oare cum a implementat Tuxy acest utilitar?
 
 Posibila documentatie:
