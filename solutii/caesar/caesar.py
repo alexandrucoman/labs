@@ -28,7 +28,6 @@ def decripteaza(mesaj):
             mesajDecriptat[i] = chr(abs(ord(mesajDecriptat[i]) - n))
     mesajString = ''.join(mesajDecriptat)
     print(mesajString)
-    pass
 
 
 def main():
@@ -39,7 +38,6 @@ def main():
     except IOError:
         print("Nu am putut obține mesajele.")
         return
-
     for mesaj in mesaje.splitlines():
         decripteaza(mesaj)
 

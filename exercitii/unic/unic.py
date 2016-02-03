@@ -23,6 +23,7 @@ Cerințe:
 def gaseste(istoric):
 
     pass
+    pass
 
 
 if __name__ == "__main__":
