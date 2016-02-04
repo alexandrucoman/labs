@@ -1,20 +1,9 @@
 import hashlib
 import os
-
 import time
+# TODO - Terminat compareFolders - verificarea fisierelor cu nume identic
+# TODO - De combinat verificarile bidirectionale intr-o functie
 
-
-def afisarefisier(curentPath):
-    for item in os.listdir(curentPath):
-        item = curentPath + os.path.sep + item
-        if os.path.isfile(item):
-            if open(item).read().__contains__("a"):
-                print os.path.abspath(item)
-        elif os.path.exists(item):
-            afisarefisier(item)
-
-
-# afisarefisier("..")
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -26,7 +15,19 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
+def afisarefisier(curentPath):
+    """Afiseaza toate fisierele de la un path transmis"""
+    for item in os.listdir(curentPath):
+        item = curentPath + os.path.sep + item
+        if os.path.isfile(item):
+            if open(item).read().__contains__("a"):
+                print os.path.abspath(item)
+        elif os.path.exists(item):
+            afisarefisier(item)
+
+
 def tree(curentPath, n):
+    """Afisarea Trrelui de fisiere/foldere din folderul respectiv"""
     for item in os.listdir(curentPath):
         item = curentPath + os.path.sep + item
         if os.path.isfile(item):
@@ -37,10 +38,8 @@ def tree(curentPath, n):
             tree(item, n + 1)
 
 
-# tree("..", 0)
-
-
 def compareFolders(first, second):
+    """Comparam un folder cu altul si cream fisierele ce nu ajung"""
     second_dir = [item for item in os.listdir(second)]
     first_dir = [item for item in os.listdir(first)]
     for item_f in first_dir:
@@ -76,3 +75,6 @@ def compareFolders(first, second):
 
 compareFolders("./test1", "./test2")
 compareFolders("./test2", "./test1")
+
+# afisarefisier("..")
+# tree("..", 0)
