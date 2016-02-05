@@ -1,4 +1,4 @@
-"""
+﻿"""
 Programul sincronizezaza p1 cu p2(path-uri catre foldere) .Orice modificare in p1 , se realizeaza automat in p2.
 """
 import os

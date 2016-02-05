@@ -1,4 +1,4 @@
-"""
+﻿"""
 Programul afiseaza toate fisierele in a caror nume exista litera a.
 """
 import os
