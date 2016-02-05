@@ -39,3 +39,5 @@ Acest depozit de cod conține o serie de exerciții ce pot fi folosite în cadru
     - Dificultate: medie
 - [grep](exercitii/grep)
     - Dificultate: medie
+- [linux](exercitii/linux)
+    - Dificultate: scăzută
