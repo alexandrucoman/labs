@@ -15,17 +15,19 @@ la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 """
 
 
+# noinspection PyPep8Naming
+
 
 def decripteaza(mesaj):
-    n=ord(mesaj[0])-ord("a")
-    mesajDecriptat=list(mesaj)
-    for i in range(0,len(mesaj)):
-        if (mesajDecriptat[i]==' ') | (mesajDecriptat[i]=='.') | (mesajDecriptat[i]==','):
-            pass
-        else: mesajDecriptat[i]=chr(ord(mesajDecriptat[i])-n)
-    mesajString=''.join(mesajDecriptat)
+    n = (ord(mesaj[0]) - ord("a"))
+    mesajDecriptat = list(mesaj)
+    for i in range(0, len(mesaj)):
+        if mesajDecriptat[i].isalpha():
+            if ord(mesajDecriptat[i]) - n < 97:
+                mesajDecriptat[i] = chr(ord(mesajDecriptat[i]) + 26)
+            mesajDecriptat[i] = chr(abs(ord(mesajDecriptat[i]) - n))
+    mesajString = ''.join(mesajDecriptat)
     print(mesajString)
-    pass
 
 
 def main():
@@ -36,9 +38,9 @@ def main():
     except IOError:
         print("Nu am putut obține mesajele.")
         return
-
     for mesaj in mesaje.splitlines():
         decripteaza(mesaj)
+
 
 if __name__ == "__main__":
     main()

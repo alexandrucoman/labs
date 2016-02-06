@@ -21,13 +21,8 @@ Cerințe:
 
 
 def gaseste(istoric):
-    """Funcția primește o listă cu elemente numerice și trebuie
-    să returneze elementul care nu este duplicat.
 
-    Exemple:
-        1 2 3 2 1 - 3
-        1 1 1 2 2 - 1
-    """
+    pass
     pass
 
 

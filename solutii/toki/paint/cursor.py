@@ -25,7 +25,23 @@ punctul de origine (0, 0) și poziția curentă a cursorului.
 """
 
 
-
+def distanta():
+    intrare=open("istoric.tuxy",'r')
+    istoric=intrare.read()
+    intrare.close()
+    y_pos=0
+    x_pos=0
+    for miscare in istoric.splitlines():
+        if miscare[0:2]=='SU':
+            y_pos+=ord(miscare[4])-ord('0')
+        elif miscare[0:2]=='JO':
+            y_pos-=ord(miscare[4])-ord('0')
+        elif miscare[0:2]=='ST':
+            x_pos-=ord(miscare[4])-ord('0')
+        elif miscare[0:2]=='DR':
+            x_pos+=ord(miscare[4])-ord('0')
+    distance=(x_pos**2+y_pos**2)**0.5
+    print('%.2f' %distance)
 
 
 if __name__ == "__main__":
