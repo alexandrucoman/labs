@@ -1,5 +1,11 @@
 This is my repository for Cloudbase Labs #1
 
+###06Feb:
+
+- removed file ReadMe-Toki.md, replaced it with ReadMe.md
+- rebased the commit and force pushed it
+- updated the work in progress 
+
 
 ###05Feb:
 
@@ -10,14 +16,22 @@ This is my repository for Cloudbase Labs #1
 Currently working files:
 
 to_icao (100%)
+
 from_icao (100%)
+
 cursor (100%)
+
 caesar (100%)
+
 file_manager (66%) [search file/dir tree/*folder sync*]
 grep_simple (5%)
+
 grep_advanced(0%)
+
 fill (0%)
+
 paranteze (0%)
+
 unic (0%)
 
 
