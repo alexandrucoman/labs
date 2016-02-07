@@ -25,13 +25,18 @@ umplem formele în care se află "x":
 
 
 def umple(imagine, punct):
-    """Funcția primește reprezentarea imaginii și coordonatele unui
-    punct.
-
-    În cazul în care punctul se află într-o formă închisă trebuie să
-    umple forma respectivă cu caracterul "*"
-    """
-    pass
+    if imagine[punct[0]][punct[1]] == '*':
+        return
+    imagine[punct[0]][punct[1]] = '*'
+    if punct[1] < (len(imagine[0]) - 1):
+        umple(imagine, (punct[0], punct[1] + 1))
+    if punct[1] >= 1:
+        umple(imagine, (punct[0], punct[1] - 1))
+    if punct[0] < (len(imagine) - 1):
+        umple(imagine, (punct[0] + 1, punct[1]))
+    if punct[0] >= 1:
+        umple(imagine, (punct[0] - 1, punct[1]))
+    return imagine
 
 
 def main():
@@ -43,8 +48,24 @@ def main():
         ["-", "-", "-", "-", "-", "*", "-", "*", "-", "-", "*", "-"],
         ["-", "-", "-", "-", "-", "*", "-", "*", "-", "-", "*", "-"],
     ]
+    for i in range(0, len(imaginea)):
+        print(imaginea[i])
+    print("Filled")
     umple(imaginea, (1, 3))
+    for i in range(0, len(imaginea)):
+        print(imaginea[i])
+    print('\n')
+    imaginea = [
+        ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
+        ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "-"],
+        ["-", "-", "-", "-", "-", "*", "-", "*", "-", "-", "*", "-"],
+        ["-", "-", "-", "-", "-", "*", "-", "*", "-", "-", "*", "-"],
+    ]
     umple(imaginea, (5, 11))
+    for i in range(0, len(imaginea)):
+        print(imaginea[i])
 
 
 if __name__ == "__main__":
