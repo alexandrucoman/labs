@@ -33,6 +33,9 @@ ICAO_R = dict ( (v,k) for k, v in ICAO.items() )
 
 
 def din_icao(nume_fisier):
+    """Funcția va primi calea către fișierul ce conține mesajul brut și
+    va genera un fișier numit icao_intrare ce va conține mesajul inițial.
+    """
     intrare=open(nume_fisier,'r')
     iesire=open('icao_intrare.icao','w')
     mesaj=intrare.read()

@@ -30,6 +30,10 @@ ICAO = {
 
 
 def icao(mesaj):
+    """Funcția va primi mesajul ce trebuie transmis și
+    va genera un fișier numit mesaj.icao_intrare ce va conține
+    mesajul scris folosind alfabetul ICAO.
+    """
     iesire=open("icao_iesire.icao",'w')
     for i in range(0,len(mesaj)):
         if mesaj[i]==' ':
