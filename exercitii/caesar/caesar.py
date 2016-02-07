@@ -19,7 +19,12 @@ def decripteaza(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
-    pass
+    firstChar = ord(mesaj[0])
+    n = firstChar - 97
+    
+    list = [chr(abs(ord(item) - 97 - n)%26 + 97) if item != " " else " " for item in mesaj]
+    
+    print("".join(list))	
 
 
 def main():
