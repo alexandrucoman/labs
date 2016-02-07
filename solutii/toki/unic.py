@@ -29,6 +29,7 @@ def gaseste(istoric):
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
     """
+
     for i in range(0, 10):
         if istoric.count(i) % 2 == 1:
             print("Cercatatorul numarul %i sta peste program! \n" %i)

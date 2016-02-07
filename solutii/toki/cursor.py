@@ -30,6 +30,7 @@ def distanta():
     calculează distanța dintre punctul de origine și poziția
     curentă a cursorului.
     """
+
     intrare=open("istoric.tuxy",'r')
     istoric=intrare.read()
     intrare.close()

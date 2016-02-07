@@ -19,6 +19,7 @@ def decripteaza(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
+
     n = (ord(mesaj[0]) - ord("a"))
     mesaj_decriptat = list(mesaj)
     for i in range(0, len(mesaj)):
