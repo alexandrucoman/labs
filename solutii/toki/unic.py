@@ -18,16 +18,14 @@ Cerințe:
     II. Găsește cercetătorul ce stă peste program după o singură
     parcurgere a listei și fără a aloca memorie suplimentară.
 """
+from collections import Counter
 
 
 def gaseste(istoric):
-    """Funcția primește o listă cu elemente numerice și trebuie
-    să returneze elementul care nu este duplicat.
-
-    Exemple:
-        1 2 3 2 1 - 3
-        1 1 1 2 2 - 1
-    """
+    for i in range(0, 10):
+        if istoric.count(i) % 2 == 1:
+            print("Cercatatorul numarul %i sta peste program! \n" %i)
+            return i
     pass
 
 
