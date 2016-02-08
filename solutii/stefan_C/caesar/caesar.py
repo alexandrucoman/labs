@@ -14,13 +14,14 @@ un mesaj prin înlocuirea fiecărei litere cu litera de pe poziția aflată
 la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 """
 
+
 def cipher(word):
     """
     :param word: the word to decipher to "ave"
     :return: the number used for encryption
     """
     word = word.lower()
-    return ord(word[0])%97
+    return ord(word[0]) % 97
 
 
 def decripteaza(mesaj):
@@ -39,6 +40,7 @@ def decripteaza(mesaj):
 				c += 26
 		mesaj_decriptat += chr(c)
 	print (mesaj_decriptat)
+
 
 def main():
 	try:

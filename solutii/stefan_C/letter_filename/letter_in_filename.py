@@ -1,8 +1,9 @@
 from __future__ import print_function
 import os
 
-topdir = 'C:\\Users\\Stefan\\Okay'
+topdir = 'C:\\Users'
 letter = 'a'
+
 
 def step(letter, dirname, names):
 	'''

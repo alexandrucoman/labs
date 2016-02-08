@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # *-* coding: UTF-8 *-*
 
-"""În laboratorul lui Tuxy to?i cercetatorii au asignat un id
+"""ï¿½n laboratorul lui Tuxy to?i cercetatorii au asignat un id
 de utilizator.
 
-Pentru fiecare cercetator se salveaza într-o lista de fiecare
-data când a deschis u?a (fie pentru a intra, fie pentru a ie?i).
+Pentru fiecare cercetator se salveaza ï¿½ntr-o lista de fiecare
+data cï¿½nd a deschis u?a (fie pentru a intra, fie pentru a ie?i).
 
-Tuxy suspecteaza ca cineva ramâne tot timpul dupa program ?i
-ar dori sa scrie un script care sa îi verifice teoria, dar
+Tuxy suspecteaza ca cineva ramï¿½ne tot timpul dupa program ?i
+ar dori sa scrie un script care sa ï¿½i verifice teoria, dar
 nu a reu?it pentru ca algoritmul sau era prea costisitor pentru
 sistem.
 
@@ -29,6 +29,7 @@ Cerin?e:
 
 def gaseste(istoric):
     '''
+    Gaseste
     :param istoric: istoric is the list of elements
     :return: the unique element from the list
     '''
@@ -39,5 +40,5 @@ def gaseste(istoric):
 
 
 if __name__ == "__main__":
-     gaseste([1, 2, 3, 2, 1]) == 3
-     gaseste([1, 1, 1, 2, 2]) == 1
+    gaseste([1, 2, 3, 2, 1]) == 3
+    gaseste([1, 1, 1, 2, 2]) == 1
