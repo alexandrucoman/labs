@@ -2,6 +2,7 @@
 # *-* coding: UTF-8 *-*
 
 """
+
 Tuxy cauta in fiecare zi cate o problema de matematica complet noua pentru el.
 
 Rezolvand problema 101, a observat ca are nevoie de cateva formule mai vechi.
@@ -34,9 +35,7 @@ el doreste sa implementeze un utilitar inteligent de cautat formule.
 Functionalitatile care doreste sa le implementeze sunt:
     [1] cautare indiferent de caz (ex. 'a'=='A' ) [-i]
     [2] cautare exacta ( nu ia in considere parti ale cuvintelor) [-e] 
-    [3] cautare si inlocuire a sirurilor de caractere [-s]
-    Ex: python utilitar.py -s "CARD" "CARDINAL"
-    fiecare sir "CARD" a fost inlocuit cu "CARDINAL"
+    [3] cautare si schimbare a sirurilor de caractere [-s]
     [4] numararea aparitiilor unui sir de caractere [-n]
     [5] cautare recursiva a fisierelor prin director [-r]
     [6] introducerea parametrilor din linia de comanda:
@@ -51,6 +50,7 @@ teoreme, utilitarul returneaza doar numele complet si cel scurt al teoremelor.
 
 
 """
+
 Oare cum a implementat Tuxy acest utilitar?
 
 Posibila documentatie:

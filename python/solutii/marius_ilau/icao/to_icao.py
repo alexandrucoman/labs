@@ -5,14 +5,17 @@
 Organizaţia Internaţională a Aviaţiei Civile propune un alfabet în care
 fiecărei litere îi este asignat un cuvânt pentru a evita problemele în
 înțelegerea mesajelor critice.
+
 Pentru a se păstra un istoric al conversațiilor s-a decis transcrierea lor
 conform următoarelor reguli:
     - fiecare cuvânt este scris pe o singură linie
     - literele din alfabet sunt separate de o virgulă
+
 Următoarea sarcină ți-a fost asignată:
     Scrie un program care să primească un fișier ce conține mesajul
-    brut (scris folosind alfabetul ICAO) și generează un fișier
-    numit icao_intrare ce va conține mesajul inițial.
+    ce trebuie transmis și generează un fișier numit mesaj.icao ce
+    va conține mesajul scris folosin alfabetul ICAO.
+
 Mai jos găsiți un dicționar ce conține o versiune a alfabetului ICAO:
 """
 
@@ -26,11 +29,23 @@ ICAO = {
 }
 
 
-def din_icao(fisier_intrare):
-    """Funcția va primi calea către fișierul ce conține mesajul brut și
-    va genera un fișier numit icao_intrare ce va conține mesajul inițial.
+def icao(mesaj):
+    """Funcția va primi calea mesajul ce trebuie transmis și
+    va genera un fișier numit mesaj.icao_intrare ce va conține
+    mesajul scris folosind alfabetul ICAO.
     """
-    pass
+    fisier = open("mesaj.icao_intrare", "w+")
+    l = [item for item in mesaj]
+    for index in range(len(l)):
+        if l[index].islower() == False and l[index] != '\n' and l[index] != ' ':
+            l[index] = chr(ord(l[index])+32)
+        if l[index] == '\n' or l[index] == ' ':
+            fisier.write('\n')
+        else:
+            fisier.write(ICAO[l[index]])
+            fisier.write(" ")
+    fisier.close()
+
 
 if __name__ == "__main__":
-    din_icao("mesaj.icao")
+    icao("Mesajul ce trebuie transmis")
