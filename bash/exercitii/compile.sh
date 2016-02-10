@@ -16,3 +16,5 @@
 #   d) sa lanseze in executie programul ( afisare mesaj de eroare daca nu exista
 # executabilul);
 #   e) iesire din script.
+
+echo "Nu ma executa"

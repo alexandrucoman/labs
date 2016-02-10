@@ -7,3 +7,5 @@
 # $ ./up.sh 3
 # $ pwd
 # /home/cgalan/folder1/folder2
+
+echo "Nu ma executa"

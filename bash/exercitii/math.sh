@@ -13,3 +13,5 @@
 # - pentru implementarea meniului se va folosi o structura de control de tip
 # case.
 # - maxim 2 fisiere (scriptul principal si fisierul de functii matematice)
+
+echo "Nu ma executa"
