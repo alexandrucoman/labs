@@ -59,4 +59,3 @@ Posibila documentatie:
     - din cadrul arhivei amintite anterior, folderul "src"
     - https://github.com/heyhuyen/python-grep
 """
-
