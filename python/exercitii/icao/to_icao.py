@@ -29,7 +29,7 @@ ICAO = {
 }
 
 
-def icao(mesaj):
+def icao():
     """Funcția va primi calea mesajul ce trebuie transmis și
     va genera un fișier numit mesaj.icao_intrare ce va conține
     mesajul scris folosind alfabetul ICAO.
@@ -38,4 +38,4 @@ def icao(mesaj):
 
 
 if __name__ == "__main__":
-    icao("Mesajul ce trebuie transmis")
+    icao()

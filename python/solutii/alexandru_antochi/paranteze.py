@@ -34,10 +34,7 @@ def este_corect(expresie):
         elif stiva[len(stiva) - 2] == '[' and stiva[len(stiva) - 1] == ']':
             stiva.pop()
             stiva.pop()
-    if not stiva:
-        return True
-    else:
-        return False
+    return not stiva
 
 
 if __name__ == "__main__":

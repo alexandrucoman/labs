@@ -13,7 +13,7 @@ Informații:
 un mesaj prin înlocuirea fiecărei litere cu litera de pe poziția aflată
 la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 """
-
+from __future__ import print_function
 LETTERS = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
 
 
@@ -35,10 +35,10 @@ def shift_letter(let, number):
 def decripteaza(mesaj, number):
     """Decrypts every line in <mesaj>"""
     new_msg = ""
-    for i in range(len(mesaj)):
+    for i in enumerate(mesaj):
         new_msg += shift_letter(mesaj[i], number)
     if "ave" in new_msg:
-        print new_msg
+        print(new_msg)
 
 
 def main():

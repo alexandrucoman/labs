@@ -13,9 +13,10 @@ Informații:
 un mesaj prin înlocuirea fiecărei litere cu litera de pe poziția aflată
 la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 """
+from __future__ import print_function
 
 
-def decripteaza(mesaj):
+def cb_decripteaza(_mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
@@ -23,6 +24,7 @@ def decripteaza(mesaj):
 
 
 def main():
+    """ Main function docstring """
     try:
         fisier = open("mesaje.secret", "r")
         mesaje = fisier.read()
@@ -32,7 +34,7 @@ def main():
         return
 
     for mesaj in mesaje.splitlines():
-        decripteaza(mesaj)
+        cb_decripteaza(mesaj)
 
 if __name__ == "__main__":
     main()

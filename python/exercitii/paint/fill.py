@@ -24,7 +24,7 @@ umplem formele în care se află "x":
 """
 
 
-def umple(imagine, punct):
+def cb_umple(_imagine, _punct):
     """Funcția primește reprezentarea imaginii și coordonatele unui
     punct.
 
@@ -35,6 +35,7 @@ def umple(imagine, punct):
 
 
 def main():
+    """  Main function docstring """
     imaginea = [
         ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
         ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
@@ -43,8 +44,8 @@ def main():
         ["-", "-", "-", "-", "-", "*", "-", "*", "-", "-", "*", "-"],
         ["-", "-", "-", "-", "-", "*", "-", "*", "-", "-", "*", "-"],
     ]
-    umple(imaginea, (1, 3))
-    umple(imaginea, (5, 11))
+    cb_umple(imaginea, (1, 3))
+    cb_umple(imaginea, (5, 11))
 
 
 if __name__ == "__main__":

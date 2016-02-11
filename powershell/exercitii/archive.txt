@@ -1,0 +1,13 @@
+You will have to write a script that takes the following parameters:
+a string representing a path: it is mandatory: $path
+a date, mandatory $date
+a string that will represent the path for the output file - should have a default value $archivePath
+
+You will need to get all the txt files last modified before $date under the path you recieved as an argument and archive them. The resulting .zip file should have the name and path from the third parameter.
+
+Notes:
+looking for files under $path should also check subfolders, meaning it should be recursive
+the files once archived should be removed 
+for zipping you should use native windows commands
+it is good practice to check if the parameters are correct
+Tip: there is a DateTime data type in powershell

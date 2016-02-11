@@ -10,12 +10,7 @@ Cerințe:
 
 def par(numar):
     """Funcție ce determină dacă un număr este par."""
-    if numar % 2 == 0:
-        return True
-
-    # Ramura else poate lipsi
-    else:
-        return False
+    return bool(numar % 2 == 0)
 
 if __name__ == "__main__":
     assert not par(1)

@@ -20,16 +20,17 @@ Câteva exemple:
 """
 
 
-def este_corect(expresie):
-    """Verifică dacă toate parantezele sunt folosite corespunzător."""
+def cb_este_corect(_):
+    """Verifică dacă toate parantezele din expresie
+    sunt folosite corespunzător."""
     pass
 
 
 if __name__ == "__main__":
-    assert este_corect("[()[]]"), "Probleme la expresia 1"
-    assert este_corect("()()[][]"), "Probleme la expresia 2"
-    assert este_corect("([([])])"), "Probleme la expresia 3"
-    assert not este_corect("[)()()()"), "Probleme la expresia 4"
-    assert not este_corect("][[()][]"), "Probleme la expresia 5"
-    assert not este_corect("([()]))"), "Probleme la expresia 6"
-    assert not este_corect("([)]"), "Probleme la expresia 7"
+    assert cb_este_corect("[()[]]"), "Probleme la expresia 1"
+    assert cb_este_corect("()()[][]"), "Probleme la expresia 2"
+    assert cb_este_corect("([([])])"), "Probleme la expresia 3"
+    assert not cb_este_corect("[)()()()"), "Probleme la expresia 4"
+    assert not cb_este_corect("][[()][]"), "Probleme la expresia 5"
+    assert not cb_este_corect("([()]))"), "Probleme la expresia 6"
+    assert not cb_este_corect("([)]"), "Probleme la expresia 7"

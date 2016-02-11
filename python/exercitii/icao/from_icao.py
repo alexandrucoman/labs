@@ -29,7 +29,7 @@ ICAO = {
 }
 
 
-def din_icao(fisier_intrare):
+def din_icao():
     """Funcția va primi calea către fișierul ce conține mesajul brut și
     va genera un fișier numit icao_intrare ce va conține mesajul inițial.
     """

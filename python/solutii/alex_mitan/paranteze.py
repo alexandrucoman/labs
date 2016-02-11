@@ -24,7 +24,7 @@ def este_corect(expresie):
     """Verifică dacă toate parantezele sunt folosite corespunzător."""
     squ = 0
     rou = 0
-    for index in range(len(expresie)):
+    for index in enumerate(expresie):
         item = expresie[index]
 
         if item == "[":
