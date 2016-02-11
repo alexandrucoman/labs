@@ -19,6 +19,6 @@ function work {
 }
 
 
-if [["$#" -eq 2]]; then
+if [[ "$#" -eq 2 ]]; then
     work "$1" "$2"
 fi
