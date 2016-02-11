@@ -1,6 +1,6 @@
 #!/bin/bash
 function rec {
-    if [["$(diff -r "$1" "$2" | grep -c "Only")" -eq 0]]; then
+    if [[ "$(diff -r "$1" "$2" | grep -c "Only")" -eq 0 ]]; then
         echo "Egale"
     else
         echo "Diferite"
