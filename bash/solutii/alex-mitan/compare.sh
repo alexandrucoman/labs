@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIFFERENCES=$(diff $1 $2)
+DIFFERENCES=$(diff "$1" "$2")
 
 if [[ -z $DIFFERENCES ]]; then
     echo "There are no differences"
