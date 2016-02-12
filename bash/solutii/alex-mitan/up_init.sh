@@ -8,3 +8,4 @@ echo '        cd ../' >> ~/.bashrc
 echo '    done' >> ~/.bashrc
 echo '} ' >> ~/.bashrc
 echo '' >> ~/.bashrc
+
