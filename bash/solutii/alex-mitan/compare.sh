@@ -1,9 +1,8 @@
 #!/bin/bash
 
-DIR1=`ls -r $1`
-DIR2=`ls -r $2`
+DIFFERENCES=$(diff $1 $2)
 
-if [[ $DIR1 = $DIR2 ]]; then
+if [[ -z $DIFFERENCES ]]; then
     echo "There are no differences"
 else
     echo "There are differences."
