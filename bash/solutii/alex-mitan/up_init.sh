@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 echo '' >> ~/.bashrc
 echo 'function up {' >> ~/.bashrc
@@ -8,4 +8,4 @@ echo '        cd ../' >> ~/.bashrc
 echo '    done' >> ~/.bashrc
 echo '} ' >> ~/.bashrc
 echo '' >> ~/.bashrc
-
+echo "up [levels] enabled."
