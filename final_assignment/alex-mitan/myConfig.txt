@@ -2,7 +2,14 @@
 # *-* coding: UTF-8 *-*
  
 """
-Testing conf file:
+Tuxy își dorește un sistem care să automatizeze instalării unui proiect
+pe infrastructura din `TuxyLand`.
+ 
+Acest proiect de automatizare va primi un fișier de configurare ce va
+conține toate instrucțiunile necesare pentru pregătirea mediului ideal
+în care va rula `TuxyApp`.
+ 
+Un exemplu de fișier de configurare ar putea fi:
  
 
 
@@ -13,18 +20,7 @@ Testing conf file:
             {
             "download": {
                 "source": "http://paste.openstack.org/raw/486795/",
-                "destination": "/home/alex/git/python-lab/final_assignment/alex-mitan/script",
-                }
-            },
-            {
-            "download": {
-                "source": "https://i.stack.imgur.com/KHegC.jpg",
-                "destination": "/home/alex/git/python-lab/final_assignment/alex-mitan/pic",
-                }
-            },
-            {
-            "barzoop": {
-                "gadoop":"notmuch"
+                "destination": "/home/alex/script.sh",
                 }
             },
         ],

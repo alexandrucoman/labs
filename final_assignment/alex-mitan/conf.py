@@ -2,11 +2,12 @@
 # *-* coding: UTF-8 *-*
 
 from __future__ import print_function
-import urllib
-import sys
-import os
+
 import ast
+import os
+import sys
 import time
+import urllib
 
 # the raw content of the config file
 
@@ -40,7 +41,7 @@ def func_config(cfg_path):
         build_log.write("Config dictionary successfully parsed")
     else:
         build_log.write("ERROR: Config dictionary failed to parse")
-        return
+        return "error"
 
     # Phase 1 - Go through dict
 
@@ -50,8 +51,15 @@ def func_config(cfg_path):
 
         # For each command list in process
         for cmd_dict in cfg_dict[phase_list]:
+
             build_log.write("    cmd_dict: " + str(cmd_dict) + '\n')
             for command in cmd_dict:
+
+                # CONFIG
+                if phase_list == "config":
+                    # TODO: config phase
+                    pass
+
                 # BEFORE INSTALL :
                 if phase_list == "before_install":
                     build_log.write("    PRE-INSTALL COMMAND: " + command + '\n')
@@ -71,7 +79,7 @@ def func_config(cfg_path):
                                 dl_path) + "\" successfully downloaded from " + dl_url + '\n')
                         else:
                             build_log.write("ERROR: File not downloaded" + '\n')
-                            return
+                            return "error"
 
                     else:
                         build_log.write("Invalid before_install command: " + command + '\n')
@@ -88,16 +96,15 @@ def func_config(cfg_path):
                                 build_log.write("Changed directory to: " + cmd_dict["run_script"]["cwd"] + '\n')
                             else:
                                 build_log.write("ERROR: changing directory failed!" + '\n')
-                                return
+                                return "error"
 
                         # set env. variables
                         for var in cmd_dict["run_script"]["env_variables"]:
                             var_value = cmd_dict["run_script"]["env_variables"][var]
                             build_log.write("Setting variable: " + var + "to" + str(var_value) + '\n')
-                            if work_os == "linux":
-                                os.environ[var] = var_value
-                                if os.environ[var] == var_value:
-                                    build_log.write("+   Successfully set " + var + "to" + var_value + '\n')
+                            os.environ[var] = var_value
+                            if os.environ[var] == var_value:
+                                build_log.write("+   Successfully set " + var + "to" + var_value + '\n')
 
                         # execute command
                         scr_exit_code = os.system(scr_command)
@@ -123,12 +130,32 @@ def func_config(cfg_path):
 
                 # AFTER INSTALL:
                 if phase_list == "after_install":
+                    build_log.write("        INSTALL COMMAND: " + command)
                     if command == "reboot":
-                        
-                    pass
+                        if cmd_dict["reboot"]["method"] == "soft":
+                            build_log.write("Performing soft reboot")
+                            if work_os == "linux":
+                                # os.system("sudo reboot")
+                                pass
+                            elif work_os == "windows":
+                                # os.system("shutdown -r")
+                                pass
+                        elif cmd_dict["reboot"]["method"] == "hard":
+                            build_log.write("Performing hard reboot")
+                            if work_os == "linux":
+                                # os.system("sudo halt")
+                                pass
+                            elif work_os == "windows":
+                                # os.system("shutdown -r -f")
+                                pass
+                        pass
+
+    return "fine"
 
 
 # the path to the config file
-config_path = "/home/alex/git/python-lab/final_assignment/alex-mitan/TestLabs.txt"
+config_path = "/home/alex/git/python-lab/final_assignment/alex-mitan/myConfig.txt"
 
-func_config(config_path)
+if func_config(config_path) != "fine":
+    # TODO: if function fails, do -force
+    pass
