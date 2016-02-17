@@ -1,0 +1,5 @@
+(Get-Process | Sort-Object CPU -desc | Select -first 5)
+(Get-NetIPAddress | Where-Object AddressFamily -eq "IPv4")
+((Get-ChildItem -Recurse | ? { $_.PSIsContainer }).Count)
+(Get-ChildItem -Recurse | Where-Object {$_.extension -eq ".txt"})
+(Get-ChildItem -Recurse | Measure-Object -property length -sum)
