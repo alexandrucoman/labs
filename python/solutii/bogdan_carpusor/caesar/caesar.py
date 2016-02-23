@@ -21,13 +21,13 @@ def decripteaza_mesajul(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
-    pass
+    print(mesaj)
 
 
 def main():
     """ Main function docstring """
     try:
-        fisier = open("mesaje.secret", "r")
+        fisier = open("../../../date_intrare/mesaje.secret", "r")
         mesaje = fisier.read()
         fisier.close()
     except IOError:
