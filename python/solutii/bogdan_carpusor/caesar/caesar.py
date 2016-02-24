@@ -21,16 +21,30 @@ def decripteaza_mesajul(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
+    key = 0;
+    decodedMessage = ""
     dictionary = "abcdefghijklmnopqrstuvwxyz"
-    for displacement in range(1,27):
-        print("Line for displacement %d" % displacement)
-        s = ""
-        for character in mesaj:
-            if dictionary.find(character.lower()) > 0:
-                s += dictionary[(dictionary.find(character.lower()) + displacement)%26]
-            else:
-                s += character
-        print(s)
+    keyPhrase  = "ave caesar"
+    for displacement in range(1,13):
+        """print("Line for displacement %d" % displacement)"""
+        tempPhrasePos = ""
+        tempPharseNeg = ""
+        messageHead = list(mesaj[0:len(keyPhrase)]);
+        for character in messageHead:
+            if dictionary.find(character) > 0:
+                if chr(ord(character) + displacement) == keyPhrase[messageHead.index(character)]:
+                    key = displacement
+                elif chr(ord(character)-displacement) == keyPhrase[messageHead.index(character)]:
+                    key = -displacement
+    print(key)
+    for character in mesaj:
+        index = dictionary.find(character)
+        if index > 0:
+            decodedMessage += dictionary[index + key]
+        else:
+            decodedMessage += character
+    print(decodedMessage)
+
 
 def main():
     """ Main function docstring """
@@ -43,7 +57,7 @@ def main():
         return
 
     for mesaj in mesaje.splitlines():
-        print("Line to be deciphred %s", mesaj)
+        print("Line to be deciphred: ", mesaj)
         decripteaza_mesajul(mesaj)
         print()
 
