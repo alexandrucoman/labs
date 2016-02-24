@@ -21,8 +21,16 @@ def decripteaza_mesajul(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
-    print(mesaj)
-
+    dictionary = "abcdefghijklmnopqrstuvwxyz"
+    for displacement in range(1,27):
+        print("Line for displacement %d" % displacement)
+        s = ""
+        for character in mesaj:
+            if dictionary.find(character.lower()) > 0:
+                s += dictionary[(dictionary.find(character.lower()) + displacement)%26]
+            else:
+                s += character
+        print(s)
 
 def main():
     """ Main function docstring """
@@ -35,7 +43,9 @@ def main():
         return
 
     for mesaj in mesaje.splitlines():
+        print("Line to be deciphred %s", mesaj)
         decripteaza_mesajul(mesaj)
+        print()
 
 if __name__ == "__main__":
     main()
