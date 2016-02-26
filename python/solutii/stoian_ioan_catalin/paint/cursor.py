@@ -22,7 +22,7 @@ ultima poziție.
 El dorește un utilitar care să îi spună care este distanța dintre
 punctul de origine (0, 0) și poziția curentă a cursorului.
 """
-
+import math
 
 def distanta():
     """
@@ -32,6 +32,22 @@ def distanta():
     calculează distanța dintre punctul de origine și poziția
     curentă a cursorului.
     """
+    fisier = open("../../../date_intrare/istoric.tuxy", "r")
+    istoric = fisier.read()
+    cursor = [0, 0]
+    istoric = istoric.split("\n")
+    for command in istoric:
+        attr = command.split(" ")
+        if attr[0] == "SUS":
+            cursor[0] += int(attr[1])
+        if attr[0] == "JOS":
+            cursor[0] -= int(attr[1])
+        if attr[0] == "DREAPTA":
+            cursor[1] += int(attr[1])
+        if attr[0] == "STANGA":
+            cursor[1] -= int(attr[1])
+    distance = math.sqrt(cursor[0] * cursor[0] + cursor[1] * cursor[1])
+    print(distance)
     pass
 
 
