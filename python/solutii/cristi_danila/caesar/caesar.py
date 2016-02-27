@@ -54,7 +54,7 @@ def main():
         return
 
     for mesaj in mesaje.splitlines():
-        print(decripteaza_mesajul(mesaj))
+        decripteaza_mesajul(mesaj)
 
 if __name__ == "__main__":
     main()
