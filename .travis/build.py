@@ -26,7 +26,7 @@ def _load():
 
     with open(CONFIG_PATH) as file_handle:
         try:
-            CONFIG.update(json.loads(file_handle))
+            CONFIG.update(json.load(file_handle))
         except ValueError:
             print("[x] The config file is invalid.")
 
