@@ -1,6 +1,8 @@
 """Update conda packages on binstars with latest versions"""
 from __future__ import print_function
 
+import hashlib
+import json
 import os
 import subprocess
 import time
@@ -12,6 +14,43 @@ CHECKS = {
     ".py": (["pylint", "-rn"], "flake8", "pep8"),
     ".sh": ("shellcheck", "bashate"),
 }
+CONFIG = {"whitelist": set()}
+CONFIG_PATH = os.path.expanduser("~/.build/config.yml")
+
+
+def _load():
+    """Load the previous state of the repository."""
+    if not os.path.exists(CONFIG_PATH):
+        print("[x] No config file available: %s" % CONFIG_PATH)
+        return
+
+    with open(CONFIG_PATH) as file_handle:
+        try:
+            CONFIG.update(json.loads(file_handle))
+        except ValueError:
+            print("[x] The config file is invalid.")
+
+
+def _save():
+    """Save the current state of the repository."""
+    if not os.path.exists(os.path.dirname(CONFIG_PATH)):
+        os.makedirs(os.path.dirname(CONFIG_PATH))
+
+    print("[i] Saving the current state to: %s" % CONFIG_PATH)
+    with open(CONFIG_PATH, "w") as file_handle:
+        json.dump(CONFIG, file_handle)
+
+
+def _sha1(path):
+    """Compute SHA1 hash for the received file."""
+    sha1_hash = hashlib.sha1()
+    with open(path) as file_handle:
+        while True:
+            chunk = file_handle.read(2048)
+            sha1_hash.update(chunk)
+            if not chunk:
+                break
+    return sha1_hash.hexdigest()
 
 
 def execute(command, **kwargs):
@@ -110,10 +149,17 @@ def scripts(root):
 def main():
     """Check if all the scripts meet the requirements."""
     exit_code = 0
+    whitelist = []
+    _load()
 
     for script in scripts(os.path.curdir):
         script_type = script[-3:]
         if script_type not in CHECKS:
+            continue
+
+        file_hash = _sha1(script)
+        if file_hash in CONFIG["whitelist"]:
+            whitelist.append(file_hash)
             continue
 
         for checker in CHECKS[script_type]:
@@ -132,8 +178,11 @@ def main():
                 print(exc.output[1])
                 exit_code = -1
             else:
+                whitelist.append(file_hash)
                 print(" [Done]")
 
+    CONFIG["whitelist"] = whitelist
+    _save()
     exit(exit_code)
 
 

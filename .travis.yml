@@ -1,13 +1,27 @@
 language: python
 python: 2.7
 
+sudo: false
+addons:
+  apt:
+    sources:
+      - debian-sid
+    packages:
+      - shellcheck
+
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
+
+cache:
+  edge: true
+  directories:
+    - $HOME/.build
+    - $HOME/.cache/pip
+
 virtualenv:
   system_site_packages: true
 
 before_install:
-  - export filename="shellcheck_0.3.7-5_amd64.deb"
-  - wget "http://ftp.debian.org/debian/pool/main/s/shellcheck/$filename"
-  - sudo dpkg -i "$filename"
   - pip install pip --upgrade
 
 install:
