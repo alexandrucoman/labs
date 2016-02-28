@@ -17,7 +17,6 @@ Următoarea sarcină ți-a fost asignată:
 
 Mai jos găsiți un dicționar ce conține o versiune a alfabetului ICAO:
 """
-# pylint: disable=unused-argument
 
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
@@ -44,9 +43,9 @@ def din_icao(mesaj):
     """Funcția va primi calea către fișierul ce conține mesajul brut și
     va genera un fișier numit icao_intrare ce va conține mesajul inițial.
     """
-    file = open(mesaj, 'r')
-    lines = getListOfLine(file.read())
-    file.close()
+    fisier = open(mesaj, 'r')
+    lines = getListOfLine(fisier.read())
+    fisier.close()
     mesajDec = ""
     for line in lines:
         words = getListOfWords(line)
