@@ -24,6 +24,7 @@ punctul de origine (0, 0) și poziția curentă a cursorului.
 """
 import math
 
+
 def distanta():
     """
     Calculează distanța dintre origine și poziția curentă.
