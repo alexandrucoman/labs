@@ -8,7 +8,8 @@ import hashlib
 import time
 import shutil
 
-class tree(object):
+
+class Tree(object):
     def __init__(self, path):
         self.path = path
         self.dir = {}
@@ -17,7 +18,6 @@ class tree(object):
         self.dir['type'] = 0
         self.dir['subdir'] = {}
         self.build(self.path, self.dir)
-
 
     def build(self, path, dir, stare=False):
         for file in os.listdir(path):
@@ -39,7 +39,6 @@ class tree(object):
                     "encrypt": self.encrypt(path_file)
                 }
 
-
     def encrypt(self, path):
         hasher = hashlib.md5()
         with open(path, "rb") as afile:
@@ -47,21 +46,19 @@ class tree(object):
             hasher.update(buffer)
             return hasher.digest()
 
-
     def auto_remove(self, dir):
         if dir == None:
             dir = self.dir
-        forRemove = []
+        forremove = []
         if 'subdir' in dir:
             for path in dir['subdir']:
                 if not os.path.exists(dir['subdir'][path]['path']):
-                    forRemove.append(path)
+                    forremove.append(path)
                 if os.path.isdir(dir['subdir'][path]['path']):
                     self.auto_remove(dir['subdir'][path])
 
-        for item in forRemove:
+        for item in forremove:
             del(dir['subdir'][item])
-
 
     def update(self, path=None, dir=None):
         if dir == None:
@@ -102,15 +99,13 @@ class tree(object):
         return
 
 
-
-
 def main(first, second):
     """
     This is the main function"
     :param first:
     :param second:
     """
-    tree1 = tree(first)
+    tree1 = Tree(first)
     print(tree1.dir)
     while True:
         time.sleep(3)
