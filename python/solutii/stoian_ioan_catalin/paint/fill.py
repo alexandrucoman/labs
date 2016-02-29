@@ -22,7 +22,9 @@ umplem formele în care se află "x":
 
 """
 # pylint: disable=unused-argument
-def checkIfPointIsOkay(imagine, punct):
+
+
+def checkifpointisokay(imagine, punct):
     "Verifica daca punctul primit ca paramestru este valid"
     if punct[0] >= len(imagine) or punct[0] < 0:
         return False
@@ -39,7 +41,7 @@ def umple_forma(imagine, punct):
     În cazul în care punctul se află într-o formă închisă trebuie să
     umple forma respectivă cu caracterul "*"
     """
-    if (not checkIfPointIsOkay(imagine, punct)):
+    if not checkifpointisokay(imagine, punct):
         return False
     imagine[punct[0]][punct[1]] = "*"
     umple_forma(imagine, (punct[0]+1, punct[1]))
@@ -47,7 +49,6 @@ def umple_forma(imagine, punct):
     umple_forma(imagine, (punct[0], punct[1]+1))
     umple_forma(imagine, (punct[0], punct[1]-1))
     return True
-    pass
 
 
 def main():
@@ -64,6 +65,7 @@ def main():
     umple_forma(imaginea, (5, 11))
     for linie in imaginea:
         print(''.join(linie))
+
 
 if __name__ == "__main__":
     main()
