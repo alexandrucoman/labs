@@ -10,6 +10,9 @@ import shutil
 
 
 class Tree(object):
+    """
+    this class build a dir structure.
+    """
     def __init__(self, path):
         self.path = path
         self.dir = {}
@@ -20,6 +23,13 @@ class Tree(object):
         self.build(self.path, self.dir)
 
     def build(self, path, dir, stare=False):
+        """
+        Function auto-call on create it self
+        :param path:
+        :param dir:
+        :param stare:
+        :return:
+        """
         for file in os.listdir(path):
             path_file = os.path.join(path, file)
             if os.path.isdir(path_file):
@@ -40,6 +50,11 @@ class Tree(object):
                 }
 
     def encrypt(self, path):
+        """
+        this function encrypt content of file
+        :param path:
+        :return:
+        """
         hasher = hashlib.md5()
         with open(path, "rb") as afile:
             buffer = afile.read()
@@ -47,6 +62,11 @@ class Tree(object):
             return hasher.digest()
 
     def auto_remove(self, dir):
+        """
+        this functon remove files that don't are in structure of tree.
+        :param dir:
+        :return:
+        """
         if dir == None:
             dir = self.dir
         forremove = []
@@ -56,16 +76,20 @@ class Tree(object):
                     forremove.append(path)
                 if os.path.isdir(dir['subdir'][path]['path']):
                     self.auto_remove(dir['subdir'][path])
-
         for item in forremove:
             del(dir['subdir'][item])
 
     def update(self, path=None, dir=None):
+        """
+        this function update structure of tree.
+        :param path:
+        :param dir:
+        :return:
+        """
         if dir == None:
             dir = self.dir
         if path == None:
             path = self.dir['path']
-        forRemove = []
         for file in os.listdir(path):
             path_file = os.path.join(path, file)
             if os.path.isdir(path_file):
@@ -94,7 +118,8 @@ class Tree(object):
                     if dir['subdir'][path_file]['encrypt'] != hash:
                         dir['subdir'][path_file]['encrypt'] = hash
                         dir['subdir'][path_file]['edit'] = True
-                        dir['subdir'][path_file]["last_mod"] = time.ctime(os.path.getmtime(path_file))
+                        path_time = os.path.getmtime(path_file)
+                        dir['subdir'][path_file]["last_mod"] = time.ctime(path_time)
         self.auto_remove(None)
         return
 
