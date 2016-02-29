@@ -19,8 +19,17 @@ Cerințe:
     parcurgere a listei și fără a aloca memorie suplimentară.
 """
 # pylint: disable=unused-argument
-def sxor(s1,s2):
-    return ''.join(chr(ord(a) ^ ord(b)) for a,b in zip(s1,s2))
+
+
+def sxor(s1, s2):
+    """
+    Aceasta functie este xor.
+    :param s1:
+    :param s2:
+    :return:
+    """
+    return ''.join(chr(ord(a) ^ ord(b)) for a, b in zip(s1, s2))
+
 
 def gaseste_unic(istoric):
     """Găsește elementul unic.
@@ -31,6 +40,7 @@ def gaseste_unic(istoric):
     Exemple:
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
+    :param istoric:
     """
     rezultat = istoric[0]
     for number in istoric[1:]:
