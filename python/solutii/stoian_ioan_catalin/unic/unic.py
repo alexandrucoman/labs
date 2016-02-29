@@ -21,14 +21,14 @@ Cerințe:
 # pylint: disable=unused-argument
 
 
-def sxor(s1, s2):
+def sxor(arg1, arg2):
     """
     Aceasta functie este xor.
-    :param s1:
-    :param s2:
+    :param arg1:
+    :param arg2:
     :return:
     """
-    return ''.join(chr(ord(a) ^ ord(b)) for a, b in zip(s1, s2))
+    return ''.join(chr(ord(a) ^ ord(b)) for a, b in zip(arg1, arg2))
 
 
 def gaseste_unic(istoric):
@@ -47,7 +47,6 @@ def gaseste_unic(istoric):
         rezultat = rezultat ^ number
 
     return rezultat
-    pass
 
 
 if __name__ == "__main__":
