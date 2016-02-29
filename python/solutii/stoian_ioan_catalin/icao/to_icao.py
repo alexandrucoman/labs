@@ -19,6 +19,7 @@ Mai jos găsiți un dicționar ce conține o versiune a alfabetului ICAO:
 """
 # pylint: disable=unused-argument
 
+
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
     'f': 'foxtrot', 'g': 'golf', 'h': 'hotel', 'i': 'india', 'j': 'juliett',
@@ -34,14 +35,13 @@ def icao(mesaj):
     va genera un fișier numit mesaj.icao_intrare ce va conține
     mesajul scris folosind alfabetul ICAO.
     """
-    file = open("mesaj.icao_intrare", "w")
-    mesajCriptat = ""
+    mesajcriptat = ""
     for lit in mesaj:
-        if(lit==" "):
-            mesajCriptat = mesajCriptat + "\n"
+        if lit == " ":
+            mesajcriptat = mesajcriptat + "\n"
         else:
-            mesajCriptat = mesajCriptat + ICAO[lit] + " "
-    print(mesajCriptat)
+            mesajcriptat = mesajcriptat + ICAO[lit] + " "
+    print(mesajcriptat)
     pass
 
 
