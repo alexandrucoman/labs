@@ -15,12 +15,12 @@ class Tree(object):
     """
     def __init__(self, path):
         self.path = path
-        self.dir = {}
-        self.dir['last_mod'] = self.getlastdate(self.path)
-        self.dir['path'] = path
-        self.dir['type'] = 0
-        self.dir['subdir'] = {}
-        self.build(self.path, self.dir)
+        self.dirstr = {}
+        self.dirstr['last_mod'] = self.getlastdate(self.path)
+        self.dirstr['path'] = path
+        self.dirstr['type'] = 0
+        self.dirstr['subdir'] = {}
+        self.build(self.path, self.dirstr)
 
     def build(self, path, dir, stare=False):
         """
@@ -70,9 +70,9 @@ class Tree(object):
         :return:
         """
         if dir == None:
-            dir = self.dir
+            dir = self.dirstr
         if path == None:
-            path = self.dir['path']
+            path = self.dirstr['path']
         for file in os.listdir(path):
             path_file = os.path.join(path, file)
             if os.path.isdir(path_file):
@@ -133,18 +133,18 @@ class Tree(object):
                         print(path_2, " was removed.")
                         forremove.append(path_2)
                     else:
-                        shutil.copy(path_2, path_1)
+                        shutil.copy2(path_2, path_1)
                         print(path_1, " sync with ", path_2)
                 #Este fisier, se gaseste si in al doilea folder, dar sunt diferite.
                 if os.path.isfile(path_1):
                     if self.encrypt(path_1) != self.encrypt(path_2):
                         #Daca fisierul din folder1 a fost modificat ultima data.
                         if self.getlastdate(path_1) > self.getlastdate(path_2):
-                            shutil.copyfile(path_1, path_2)
+                            shutil.copy2(path_1, path_2)
                             print(path_2, " sync with ", path_1)
                         #Daca fisierul din folder2 a fost modificat ultima data.
                         else:
-                            shutil.copyfile(path_2, path_1)
+                            shutil.copy2(path_2, path_1)
                             print(path1, " sync with ", path_2)
             if os.path.isdir(path_2):
                 #este director dar nu se gaseste in al doilea folder
@@ -176,8 +176,8 @@ class Tree(object):
         :param with_dir:
         :return:
         """
-        structure1 = self.dir
-        structure2 = with_dir.dir
+        structure1 = self.dirstr
+        structure2 = with_dir.dirstr
         self.sync(structure1, structure2, self.path, with_dir.path)
         self.sync(structure2, structure1, with_dir.path, self.path)
         self.update()
