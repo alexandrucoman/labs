@@ -30,10 +30,10 @@ def gaseste_unic(istoric):
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
     """
+    suma = 0
     for val in istoric:
-        sum = sum ^ val
-    return sum
-
+        suma = suma ^ val
+    return suma
 
 
 if __name__ == "__main__":

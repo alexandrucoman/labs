@@ -28,13 +28,16 @@ def print_forme(imagine, punct):
     """Funcţia afişează matricea imagine împreună cu punctul din
     parametrul 'punct', notat cu x
     """
-
-    for i in range(len(imagine)):
-        for j in range(len(imagine[0])):
+    # folosesc
+    index_i, index_j = 0, 0
+    for _ in imagine:
+        for j in imagine[0]:
             if punct:
-                if i == punct[0] and j == punct[1]:
-                    imagine[i][j] = 'x'
-            print(imagine[i][j], " ", end="")
+                if index_i == punct[0] and index_j == punct[1]:
+                    j = 'x'
+            print(j, " ", end="")
+            index_j = index_j + 1
+        index_i = index_i + 1
         print("\n")
     print("\n\n")
 
