@@ -25,124 +25,123 @@ import yaml
 import os
 
 
-def f_download(conf):
+def f_download(conf, log):
     ''' descarca un fisier intr-o locatie data '''
-    print "download: ", conf
-    print
+    destinatie = os.path.split(conf['destination'])
+    dest = destinatie[0]
+    if not os.path.exists(dest):
+        os.makedirs(dest)
+    log.write("".join(["created path for downloading ", conf['source'], "\n"]))
     os.system("".join(["wget -O ", conf['destination'], " ", conf['source']]))
-    
+    log.write("download done\n")
 
-def f_run_script(conf):
+
+def f_run_script(conf, log):
     ''' ruleaza un script '''
-    print "run script: ", conf
-    print
-    return 0
+    log.write("".join(["start running script ", conf['command'], "\n"]))
+    return 1
 
 
-def f_delete(conf):
+def f_delete(conf, log):
     ''' sterge fisiere '''
-    print "delete: ", conf
-    print
+    log.write("".join(["trying to delete ", conf['path'], "\n"]))
     try:
-        os.system("".join(["rm -rf ", conf['path']]))
-    except:
-        print "Nu putem sterge"
+        os.system("".join(["rm -rf ", conf['path'], "\n"]))
+    except IOError:
+        log.write("".join(["Nu putem sterge ", conf['path'], "\n"]))
 
 
-def f_shutdown(conf):
+def f_shutdown(conf, log):
     ''' inchide sistemul '''
-    print "shudown: ", conf
-    print
+    log.write("shutting down..\n")
     if conf['method'] == 'hard':
         os.system("shutdown -h now")
     else:
         os.system("shutdown -h +5 Inchidem sistemul")
 
 
-def f_reboot(conf):
+def f_reboot(conf, log):
     ''' reporneste sistemul '''
-    print "reboot: ", conf
-    print
+    log.write("rebooting..\n")
     if conf['method'] == 'hard':
         os.system("shutdown -r -f now")
     else:
         os.system("shutdown -r now")
 
 
-def stage_config(conf):
+def stage_config(conf, log):
     ''' Ruleaza scriptul de configurare '''
-    print " -> config: ", type(conf), len(conf), '\n\n', conf
-    print
+    log.write("".join(["start configuring to ", conf['hostname'], "\n"]))
 
 
-def stage_before_install(conf):
+def stage_before_install(conf, log):
     ''' Ruleaza scriptul de pregatire a instalarii '''
-    print " -> bef install: \n"
+    print " -> before install: \n"
     for action in conf:
         for action_name in action:
             if action_name == 'download':
-                f_download(action['download'])
+                f_download(action['download'], log)
             elif action_name == 'run_script':
-                f_run_script(action['run_script'])
+                f_run_script(action['run_script'], log)
             elif action_name == 'delete':
-                f_delete(action['delete'])
+                f_delete(action['delete'], log)
             elif action_name == 'shutdown':
-                f_shutdown(action['shutdown'])
+                f_shutdown(action['shutdown'], log)
             elif action_name == 'reboot':
-                f_reboot(action['reboot'])
+                f_reboot(action['reboot'], log)
 
 
-def stage_install(conf):
+def stage_install(conf, log):
     ''' Ruleaza scriptul de instalare '''
     print " -> install: \n"
     succes_state = 0
     for action in conf:
         for action_name in action:
             if action_name == 'download':
-                f_download(action['download'])
+                f_download(action['download'], log)
             elif action_name == 'run_script':
-                succes_state = f_run_script(action['run_script'])
+                succes_state = f_run_script(action['run_script'], log)
             elif action_name == 'delete':
-                f_delete(action['delete'])
+                f_delete(action['delete'], log)
             elif action_name == 'shutdown':
-                f_shutdown(action['shutdown'])
+                f_shutdown(action['shutdown'], log)
             elif action_name == 'reboot':
-                f_reboot(action['reboot'])
+                f_reboot(action['reboot'], log)
     return succes_state
 
 
-def stage_install_failed(conf):
+def stage_install_failed(conf, log):
     ''' In caz ca nu se poate face instalarea se executa acest script '''
     print " -> inst failed: \n"
     for action in conf:
         for action_name in action:
             if action_name == 'download':
-                f_download(action['download'])
+                f_download(action['download'], log)
             elif action_name == 'run_script':
-                f_run_script(action['run_script'])
+                f_run_script(action['run_script'], log)
             elif action_name == 'delete':
-                f_delete(action['delete'])
+                f_delete(action['delete'], log)
             elif action_name == 'shutdown':
-                f_shutdown(action['shutdown'])
+                f_shutdown(action['shutdown'], log)
             elif action_name == 'reboot':
-                f_reboot(action['reboot'])
+                f_reboot(action['reboot'], log)
 
 
-def stage_after_install(conf):
+def stage_after_install(conf, log):
     ''' Scriptul de dupa instalare '''
     print " -> after inst: \n"
     for action in conf:
         for action_name in action:
             if action_name == 'download':
-                f_download(action['download'])
+                f_download(action['download'], log)
             elif action_name == 'run_script':
-                f_run_script(action['run_script'])
+                f_run_script(action['run_script'], log)
             elif action_name == 'delete':
-                f_delete(action['delete'])
+                f_delete(action['delete'], log)
             elif action_name == 'shutdown':
-                f_shutdown(action['shutdown'])
+                f_shutdown(action['shutdown'], log)
             elif action_name == 'reboot':
-                f_reboot(action['reboot'])
+                f_reboot(action['reboot'], log)
 
 
 def main(path):
@@ -154,13 +153,19 @@ def main(path):
         print "Nu am putut citi datele din fisierul de configurare."
         return
 
+    log = open("build.log", "w")
     succesfull = 1
-    stage_config(config['config'])
-    stage_before_install(config['before_install'])
-    if stage_install(config['install']) is succesfull:
-        stage_after_install(config['after_install'])
+    log.write("start!\n")
+    log.write("configuring..\n")
+    stage_config(config['config'], log)
+    log.write("preparing install..\n")
+    stage_before_install(config['before_install'], log)
+    if stage_install(config['install'], log) is succesfull:
+        log.write("install complete. post-install script running..\n")
+        stage_after_install(config['after_install'], log)
     else:
-        stage_install_failed(config['install_failed'])
+        log.write("install failed.\n")
+        stage_install_failed(config['install_failed'], log)
 
 if __name__ == "__main__":
-    main("tuxy.config")
+    main("../../../date_intrare/tuxy2.config")
