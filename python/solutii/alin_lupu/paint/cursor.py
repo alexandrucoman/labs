@@ -36,21 +36,21 @@ def distanta():
     """
     try:
         f_in = open("../../../date_intrare/istoric.tuxy", "r")
-        instructions = f_in.read().splitlines()
+        instrs = f_in.read().splitlines()
         f_in.close()
 
         x_pos, y_pos = 0, 0
-        for instruction in instructions:
-            commands = instruction.split(' ')
-            if commands[0] and commands[0] in ["SUS", "JOS", "STANGA", "DREAPTA"]:
-                if commands[0] == "SUS":
-                    y_pos += int(commands[1])
-                if commands[0] == "JOS":
-                    y_pos -= int(commands[1])
-                if commands[0] == "STANGA":
-                    x_pos -= int(commands[1])
-                if commands[0] == "DREAPTA":
-                    x_pos += int(commands[1])
+        for instr in instrs:
+            direc = instr.split(' ')
+            if direc[0] and direc[0] in ["SUS", "JOS", "STANGA", "DREAPTA"]:
+                if direc[0] == "SUS":
+                    y_pos += int(direc[1])
+                if direc[0] == "JOS":
+                    y_pos -= int(direc[1])
+                if direc[0] == "STANGA":
+                    x_pos -= int(direc[1])
+                if direc[0] == "DREAPTA":
+                    x_pos += int(direc[1])
             else:
                 return 0
     except IOError:

@@ -21,8 +21,8 @@ umplem formele în care se află "x":
   |-----*---*-x|          |-----*---*--|         |-----*---***|
 
 """
-
 from __future__ import print_function
+
 
 def print_forme(imagine, punct):
     """Funcţia afişează matricea imagine împreună cu punctul din
@@ -37,6 +37,7 @@ def print_forme(imagine, punct):
             print(imagine[i][j], " ", end="")
         print("\n")
     print("\n\n")
+
 
 def umple_forma(imagine, punct):
     """Funcția primește reprezentarea imaginii și coordonatele unui
@@ -59,7 +60,6 @@ def umple_forma(imagine, punct):
     if punct[0] >= 1:
         umple_forma(imagine, (punct[0] - 1, punct[1]))
     return imagine
-
 
 
 def main():

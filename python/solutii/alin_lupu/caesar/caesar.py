@@ -20,11 +20,11 @@ def decripteaza_mesajul(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
-    for n in range (0,26):
+    for i in range(0, 26):
         mesaj_final = ' '
         for litera in mesaj:
             if litera != ' ' and litera != '.':
-                litera = 97 + (ord(litera)-97+n)%26
+                litera = 97 + (ord(litera) - 97 + i) % 26
                 mesaj_final = mesaj_final + chr(litera)
             else:
                 mesaj_final = mesaj_final + litera
@@ -32,10 +32,11 @@ def decripteaza_mesajul(mesaj):
             print(mesaj_final)
             print('\n')
 
+
 def main():
     """ Main function docstring """
     try:
-        fisier = open("mesaje.secret", "r")
+        fisier = open("../../../date_intrare/mesaje.secret", "r")
         mesaje = fisier.read()
         fisier.close()
     except IOError:

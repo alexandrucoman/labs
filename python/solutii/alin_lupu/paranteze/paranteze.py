@@ -18,6 +18,7 @@ Câteva exemple:
     - [)]()[(]  nu este bine
 """
 
+
 def verifica_expresia(paranteze):
     """Verifică validitatea expresiei primite.
 
@@ -39,6 +40,7 @@ def verifica_expresia(paranteze):
         else:
             return False
     return not stack
+
 
 if __name__ == "__main__":
     assert verifica_expresia("[()[]]"), "Probleme la expresia 1"

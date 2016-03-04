@@ -50,48 +50,57 @@ Posibila documentatie:
 """
 
 from __future__ import print_function
-import sys, getopt, re
+import sys
+import getopt
+import re
 
-#NETERMINATA
+# NETERMINATA
 
-case_sensitive = True
-exact_search = False
+# case_sensitive = True
+# exact_search = False
 
-def parseopt(argv,options):
-    #end_opt = argv.find(' ', start_opt = argv.find('-'))
-    #if end_opt:
-     #   input_options = argv[start_opt-end_opt]
+
+def parseopt(argv, options):
+    """ Functie inlocuitor pentru geopt pt ca nu se pot pune 2
+    argumente dupa o optiune, necesar pt -s "blabla" "blabla"
+    """
+    # end_opt = argv.find(' ', start_opt = argv.find('-'))
+    # if end_opt:
+    # input_options = argv[start_opt-end_opt]
 
     regexp = re.compile("[^"+options+"]")
     result = regexp.findall(''.join(argv))
-    
+
     if result:
         print("invalid arguments/options:" + str(result))
 
-def main(argv):
-    try:
-        opts, args = getopt.getopt(argv,'ies:nr')
 
+def main(argv):
+    """ Grep in python
+    """
+    try:
+        opts, args = getopt.getopt(argv, 'ies:nr')
     except getopt.GetoptError as err:
         print(err)
         sys.exit(2)
 
-    print(args,opts)
+    print(args, opts)
     print(args)
-    for o in opts:
-        if o[0] == '-i':
-            case_sensitive = False
+    for i in opts:
+        if i[0] == '-i':
+            # case_sensitive = False
             print("Case insensitive activated!")
             sys.exit()
-        elif o[0] == "-e":
+        elif i[0] == "-e":
             print("Exact Search Activated")
             sys.exit()
-        elif o == "-s":
-            print('Cautarea sirului {0} in {1}').format(o,a)
+        elif i == "-s":
+            # print('Cautarea sirului {0} in {1}').format(o, argv)
             sys.exit()
         else:
-            print(o)
+            print(i)
             assert False, "unhandled option"
 
+
 if __name__ == "__main__":
-    parseopt(sys.argv[1:],"iesnr")
+    parseopt(sys.argv[1:], "iesnr")

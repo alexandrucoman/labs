@@ -18,7 +18,6 @@ Cerințe:
     II. Găsește cercetătorul ce stă peste program după o singură
     parcurgere a listei și fără a aloca memorie suplimentară.
 """
-# pylint: disable=unused-argument
 
 
 def gaseste_unic(istoric):
@@ -34,6 +33,8 @@ def gaseste_unic(istoric):
     for val in istoric:
         sum = sum ^ val
     return sum
+
+
 
 if __name__ == "__main__":
     assert gaseste_unic([1, 2, 3, 2, 1]) == 3
