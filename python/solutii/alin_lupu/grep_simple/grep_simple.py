@@ -52,20 +52,21 @@ Posibila documentatie:
 from __future__ import print_function
 import sys, getopt, re
 
+#NETERMINATA
+
 case_sensitive = True
 exact_search = False
 
 def parseopt(argv,options):
-    if end_opt = argv.find(' ', start_opt = argv.find('-')) 
-        input_options = argv[start_opt-end_opt]
+    #end_opt = argv.find(' ', start_opt = argv.find('-'))
+    #if end_opt:
+     #   input_options = argv[start_opt-end_opt]
 
     regexp = re.compile("[^"+options+"]")
     result = regexp.findall(''.join(argv))
     
     if result:
         print("invalid arguments/options:" + str(result))
-
-    print(  input_options)
 
 def main(argv):
     try:
@@ -74,7 +75,7 @@ def main(argv):
     except getopt.GetoptError as err:
         print(err)
         sys.exit(2)
-    
+
     print(args,opts)
     print(args)
     for o in opts:
@@ -94,4 +95,3 @@ def main(argv):
 
 if __name__ == "__main__":
     parseopt(sys.argv[1:],"iesnr")
-

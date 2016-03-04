@@ -14,7 +14,6 @@ Următoarea sarcină ți-a fost asignată:
     numit icao_intrare ce va conține mesajul inițial.
 Mai jos găsiți un dicționar ce conține o versiune a alfabetului ICAO:
 """
-# pylint: disable=unused-argument
 
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
@@ -31,15 +30,15 @@ def din_icao(mesaj):
     va genera un fișier numit icao_intrare ce va conține mesajul inițial.
     """
     try:
-        f = open(mesaj, 'r')
+        in_file = open(mesaj, 'r')
         mesaj_final = ' '
-        for line in f:
+        for line in in_file:
             for i in line.split():
                 mesaj_final = mesaj_final + i[0]
             mesaj_final = mesaj_final + ' '
-        open(mesaj+'_intrare','w').write(mesaj_final)
+        open(mesaj+'_intrare', 'w').write(mesaj_final)
     except IOError:
         print 'cannot open file'
 
 if __name__ == "__main__":
-    din_icao("mesaj.icao")
+    din_icao("../../../date_intrare/mesaj.icao")

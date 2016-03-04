@@ -17,7 +17,6 @@ Câteva exemple:
     - (][][)    nu este bine
     - [)]()[(]  nu este bine
 """
-# pylint: disable=unused-argument
 
 def verifica_expresia(paranteze):
     """Verifică validitatea expresiei primite.
@@ -26,23 +25,20 @@ def verifica_expresia(paranteze):
     sunt folosite corespunzător.
     """
     stack = []
-    inPar = "(["
-    outPar = ")]"
-    for c in paranteze:
-        if c in inPar:
-            stack.append(c)
-        elif c in outPar:
+    in_par = "(["
+    out_par = ")]"
+    for char in paranteze:
+        if char in in_par:
+            stack.append(char)
+        elif char in out_par:
             if not stack:
                 return False
             else:
-                stackTop = stack.pop()
-                parPair = inPar[outPar.index(c)]
-                if stackTop != pairPair:
+                if stack.pop() != in_par[out_par.index(char)]:
                     return False
         else:
             return False
     return not stack
-
 
 if __name__ == "__main__":
     assert verifica_expresia("[()[]]"), "Probleme la expresia 1"

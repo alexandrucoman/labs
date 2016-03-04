@@ -31,12 +31,10 @@ def gaseste_unic(istoric):
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
     """
-    sum = 0
     for val in istoric:
         sum = sum ^ val
-    return sum 
-
+    return sum
 
 if __name__ == "__main__":
     assert gaseste_unic([1, 2, 3, 2, 1]) == 3
-    assert gaseste_unic([1, 1, 1, 2, 2]) == 1 
+    assert gaseste_unic([1, 1, 1, 2, 2]) == 1

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# *-* coding: UTF-8 *-*
 """Tuxy dorește să împlementeze un nou paint pentru consolă.
 
 În timpul dezvoltării proiectului s-a izbit de o problemă
@@ -36,21 +38,25 @@ def distanta():
         f_in = open("../../../date_intrare/istoric.tuxy", "r")
         instructions = f_in.read().splitlines()
         f_in.close()
-        
-        x, y = 0, 0
+
+        x_pos, y_pos = 0, 0
         for instruction in instructions:
             commands = instruction.split(' ')
             if commands[0] and commands[0] in ["SUS", "JOS", "STANGA", "DREAPTA"]:
-                if commands[0] == "SUS": y += int(commands[1])
-                if commands[0] == "JOS": y -= int(commands[1])
-                if commands[0] == "STANGA": x -= int(commands[1])
-                if commands[0] == "DREAPTA": x += int(commands[1])
+                if commands[0] == "SUS":
+                    y_pos += int(commands[1])
+                if commands[0] == "JOS":
+                    y_pos -= int(commands[1])
+                if commands[0] == "STANGA":
+                    x_pos -= int(commands[1])
+                if commands[0] == "DREAPTA":
+                    x_pos += int(commands[1])
             else:
                 return 0
     except IOError:
         print("FileNotFound")
         return
-    return sqrt(pow(0 - x, 2) + pow(0 - y, 2))
+    return sqrt(pow(0 - x_pos, 2) + pow(0 - y_pos, 2))
 
 
 if __name__ == "__main__":
