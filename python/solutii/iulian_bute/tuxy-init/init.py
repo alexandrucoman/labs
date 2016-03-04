@@ -72,6 +72,18 @@ def f_reboot(conf, log):
 def stage_config(conf, log):
     ''' Ruleaza scriptul de configurare '''
     log.write("".join(["start configuring to ", conf['hostname'], "\n"]))
+    os.system("".join(["hostname ", conf['hostname']]))
+    for user in conf["users"]:
+        n_usr = "".join(["useradd -e ", conf['users'][user]['expiredate']])
+        n_usr = "".join([n_usr, " -G ", conf['users'][user]["groups"][0]])
+        n_usr = "".join([n_usr, " -g "])
+        n_usr = "".join([n_usr, conf['users'][user]["primary-group"]])
+        n_usr = "".join([n_usr, " -p ", conf['users'][user]['password']])
+        n_usr = "".join([n_usr, " --comment "])
+        n_usr = "".join([n_usr, conf['users'][user]['full_name']])
+        n_usr = "".join([n_usr, " ", user])
+        os.system(n_usr)
+        log.write("".join(["created user ", user, '\n']))
 
 
 def stage_before_install(conf, log):
