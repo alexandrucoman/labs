@@ -57,6 +57,11 @@ class TuxyApp(object):
         Aceasta functie configureaza sistemul.
         :return:
         """
+        hostname = self.config['config']['hostname']
+        users = self.config['config']['users']
+        files = self.config['config']['write_files']
+        subprocess.Popen(['hostname', hostname])
+        subprocess.Popen([])
 
     def beforeinstall(self):
         """
