@@ -41,7 +41,8 @@ class TuxyApp(object):
         if not os.path.exists("build.log"):
             open("build.log", "a").close()
 
-    def buildLog(self, text):
+    @staticmethod
+    def buildlog(text):
         """
         Aceasta functie scrie in log.
         :param text:
@@ -52,7 +53,7 @@ class TuxyApp(object):
             myfile.write(''.join(lista))
         myfile.close()
 
-    def config(self):
+    def configuration(self):
         """
         Aceasta functie configureaza sistemul.
         :return:
@@ -61,7 +62,18 @@ class TuxyApp(object):
         users = self.config['config']['users']
         files = self.config['config']['write_files']
         subprocess.Popen(['hostname', hostname])
-        subprocess.Popen([])
+        self.buildlog(''.join(['S-a schimbat numele la hostname in ', hostname]))
+        for name in users:
+            listcommand = ["useradd", name,
+                           '-e', users[name]['expiredate'],
+                           '-p', users[name]['password'],
+                           '-G', users[name]['primary-group']]
+            subprocess.Popen(listcommand)
+            self.buildlog(''.join(['S-a creat user-ul ', name]))
+        for file in files:
+            with open(files[file]['path'], "a") as myfile:
+                myfile.write(files[file]['content'])
+            subprocess.call(['chmod', files[file]['permission'], files[file]['path']])
 
     def beforeinstall(self):
         """
@@ -72,12 +84,12 @@ class TuxyApp(object):
         destination = self.config['before_install'][0]['download']['destination']
         try:
             req = requests.get(url)
-        except (IOError):
-            self.buildLog(''.join(["Nu s-a putut descarca fisierul sursa de la adresa ", url]))
+        except IOError:
+            self.buildlog(''.join(["Nu s-a putut descarca fisierul sursa de la adresa ", url]))
             sys.exit(0)
 
         open("tmp", 'a').close()
-        self.buildLog("Se creaza un fisier temporar pentru a retine informatiile descarcate.")
+        self.buildlog("Se creaza un fisier temporar pentru a retine informatiile descarcate.")
         file = open("tmp", 'wb')
         for chunk in req.iter_content(100000):
             file.write(chunk)
@@ -87,7 +99,7 @@ class TuxyApp(object):
         path = folders[1]
         if not os.path.exists(path):
             os.mkdir(folders[1])
-            self.buildLog(''.join(["Se creaza path-ul ", destination]))
+            self.buildlog(''.join(["Se creaza path-ul ", destination]))
         if not os.path.exists(destination):
             for folder in folders[2:]:
                 if last != folder:
@@ -96,9 +108,9 @@ class TuxyApp(object):
                         os.mkdir(path)
                 else:
                     shutil.copyfile("tmp", os.path.join(path, folder))
-        self.buildLog("Descarcarea script-ului a fost finalizata cu succes.")
+        self.buildlog("Descarcarea script-ului a fost finalizata cu succes.")
         os.remove("tmp")
-        self.buildLog("Fisierul temporar a fost sters.")
+        self.buildlog("Fisierul temporar a fost sters.")
 
     def install(self):
         """
@@ -113,7 +125,7 @@ class TuxyApp(object):
         shell = self.config['install'][0]['run_script']['shell']
         os.chdir(cwd)
         attempts = int(attempts)
-        while(attempts > 0):
+        while attempts > 0:
             try:
                 d = dict(os.environ)
                 for var in env:
@@ -124,7 +136,12 @@ class TuxyApp(object):
                 sec = int(retry_interval)
                 time.sleep(sec)
                 attempts -= 1
-                self.buildLog(''.join(["EROARE: Comanda nu a putut fii executata. Se reincearca executarea script-ului. Incercari ramase", attempts]))
+                mlist = [
+                    "EROARE: Comanda nu a putut fii executata. Se reincearca executarea script-ului. Incercari ramase",
+                    attempts
+                ]
+                mesaj = ''.join(mlist)
+                self.buildlog(mesaj)
         if attempts == 0:
             self.installfaild()
 
@@ -142,12 +159,12 @@ class TuxyApp(object):
             else:
                 comanda = "shutdown -r -f"
         elif platform.system() == "Linux":
-             if method == "soft":
-                command = "reboot"
-             else:
-                command = "reboot -f"
-        self.buildLog("Instalare efectuata cu success.")
-        self.buildLog("Sistemul se pregateste sa fie restartat.")
+            if method == "soft":
+                comanda = "reboot"
+            else:
+                comanda = "reboot -f"
+        self.buildlog("Instalare efectuata cu success.")
+        self.buildlog("Sistemul se pregateste sa fie restartat.")
         subprocess.Popen(comanda.split(" "))
 
     def installfaild(self):
@@ -156,9 +173,8 @@ class TuxyApp(object):
         :return:
         """
         method = self.config['install_failed'][0]['shutdown']['method']
-        del_met = self.config['install_failed']['delete']['method']
         del_path = self.config['install_failed']['delete']['path']
-        self.buildLog("Instalare a fost abandonata. Se sterg fisierele descarcate.")
+        self.buildlog("Instalare a fost abandonata. Se sterg fisierele descarcate.")
         if os.path.isdir(del_path):
             shutil.rmtree(del_path)
         elif os.path.isfile(del_path):
@@ -170,11 +186,11 @@ class TuxyApp(object):
             else:
                 comanda = "shutdown -r -f"
         elif platform.system() == "Linux":
-             if method == "soft":
-                command = "reboot"
-             else:
-                command = "reboot -f"
-        self.buildLog("Sistemul se pregateste sa fie restartat.")
+            if method == "soft":
+                comanda = "reboot"
+            else:
+                comanda = "reboot -f"
+        self.buildlog("Sistemul se pregateste sa fie restartat.")
         subprocess.Popen(comanda.split(" "))
 
     def run(self):
@@ -182,17 +198,22 @@ class TuxyApp(object):
         Aceasta este functia care trebuie apelata atunci cand se creaza un obiect de aceasta clasa.
         :return:
         """
-        self.buildLog("Se pregateste mediul de instalare")
+        self.buildlog("Se pregateste mediul de instalare")
         self.beforeinstall()
-        self.buildLog("Se configureaza sistemul.")
-        self.config()
-        self.buildLog("Se instaleaza...")
+        self.buildlog("Se configureaza sistemul.")
+        self.configuration()
+        self.buildlog("Se instaleaza...")
         self.install()
-        self.buildLog("Instalare efectuata cu success, se pregateste sistemul pentru restartare")
+        self.buildlog("Instalare efectuata cu success, se pregateste sistemul pentru restartare")
         self.afterinstall()
 
+
 def main(path):
-    """Citim fisierul de configurare."""
+    """
+    Citim fisierul de configurare
+    :param path:
+    :return:
+    """
     try:
         with open(path, "r") as fisier:
             config = yaml.load(fisier)
@@ -203,7 +224,5 @@ def main(path):
         return
 
 
-
 if __name__ == "__main__":
     main("../../../date_intrare/tuxy.config")
-
