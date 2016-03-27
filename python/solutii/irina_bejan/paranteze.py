@@ -28,9 +28,9 @@ def verifica_expresia(paranteze):
     """
     stack = []
 
-    for ch in paranteze:
+    for char in paranteze:
         if char == '[' or char == '(':
-            stack.append(ch)
+            stack.append(char)
         elif len(stack) == 0:
             return False
         elif (stack[-1] == '(') and (char == ')'):
