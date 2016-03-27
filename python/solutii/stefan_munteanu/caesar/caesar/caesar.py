@@ -8,8 +8,6 @@ Informa?ii:
 un mesaj prin înlocuirea fiecãrei litere cu litera de pe pozi?ia aflatã
 la un n pa?i de ea în alfabet (unde este n este un numãr întreg cunoscut
 """
-# pylint: disable=unused-argument
-
 from __future__ import print_function
 
 def first_word(word):
@@ -36,6 +34,9 @@ def decripteaza_mesajul(mesaj):
 
 
 def main():
+    """
+    The main function
+    """
     try:
         fisier = open("mesaje.secret", "r")
         mesaje = fisier.read()

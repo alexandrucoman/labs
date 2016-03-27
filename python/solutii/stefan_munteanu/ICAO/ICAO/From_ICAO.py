@@ -20,7 +20,6 @@ def din_icao():
             words = [x for x in i.split()]
             for j in words:
                 file_to_write.write(j[0])
-    pass
 
 
 if __name__ == "__main__":
