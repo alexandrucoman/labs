@@ -25,13 +25,13 @@ def decripteaza_mesajul(mesaj):
     key = first_word(words[0])
     unlocked = ' '
     for i in mesaj.lower():
-        NumberOfSteps = ord(' ')
+        number_of_steps = ord(' ')
         if i.isalpha():
-            NumberOfSteps = (ord(i)-key)
-        if (not chr(NumberOfSteps).isalpha() and chr(NumberOfSteps) != ' ')\
-                or (chr(NumberOfSteps).isupper()):
-            NumberOfSteps = NumberOfSteps + 26
-        unlocked = unlocked + chr(NumberOfSteps)
+            number_of_steps = (ord(i)-key)
+        if (not chr(number_of_steps).isalpha() and chr(number_of_steps) != ' ')\
+                or (chr(number_of_steps).isupper()):
+            number_of_steps = number_of_steps + 26
+        unlocked = unlocked + chr(number_of_steps)
     print(unlocked)
 
 

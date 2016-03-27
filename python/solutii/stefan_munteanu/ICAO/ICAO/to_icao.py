@@ -23,5 +23,5 @@ def icao(mesaj):
 
 
 if __name__ == "__main__":
-    a=raw_input('Enter your input:')
-    icao(a)
+    read_word_to_icao=raw_input('Enter your input:')
+    icao(read_word_to_icao)
