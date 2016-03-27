@@ -39,6 +39,4 @@ def main():
         decripteaza_mesajul(mesaj)
 
 if __name__ == "__main__":
-    """main
-    """
     main()

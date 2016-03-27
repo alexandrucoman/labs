@@ -25,6 +25,4 @@ def din_icao():
 
 
 if __name__ == "__main__":
-    """main
-    """
     din_icao()
