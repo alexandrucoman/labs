@@ -38,17 +38,22 @@ def distanta():
     ypoint = 0
     for miscare in miscari.splitlines():
         mutare = miscare.split()
-        casute = int(mutare[1])
-        if mutare[0] == "SUS":
-            ypoint -= casute
-        elif mutare[0] == "JOS":
-            ypoint += casute
-        elif mutare[0] == "DREAPTA":
-            xpoint += casute
-        elif mutare[0] == "STANGA":
-            xpoint -= casute
-    print sqrt(xpoint**2 + ypoint**2)
+        try:
+            casute = int(mutare[1])
+            if mutare[0] == "SUS":
+                ypoint -= casute
+            elif mutare[0] == "JOS":
+                ypoint += casute
+            elif mutare[0] == "DREAPTA":
+                xpoint += casute
+            elif mutare[0] == "STANGA":
+                xpoint -= casute
+            else:
+                raise ValueError
+        except ValueError:
+            return "Fisierul nu corespunde cerintei."
+    return sqrt(xpoint**2 + ypoint**2)
 
 
 if __name__ == "__main__":
-    distanta()
+    print distanta()
