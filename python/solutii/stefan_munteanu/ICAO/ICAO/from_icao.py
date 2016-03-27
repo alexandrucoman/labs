@@ -9,6 +9,7 @@ ICAO = {
     'z': 'zulu'
 }
 
+
 def din_icao():
     """Func?ia va primi calea mesajul ce trebuie transmis ?i
     va genera un fi?ier numit mesaj.icao_intrare ce va con?ine

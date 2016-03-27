@@ -1,9 +1,8 @@
-
-
 """
 primeste o lista cu elemente numerice
 si returneaza elem nu este duplicat.
 """
+
 
 def history(mesaj):
     """
@@ -14,6 +13,7 @@ def history(mesaj):
     for i in xrange(1, len(mesaj)):
         unique = unique ^ mesaj[i]
     return unique
+
 
 if __name__ == "__main__":
     history([1, 2, 3, 2, 1])

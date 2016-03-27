@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 
 
-=======
-"""Icao
-"""
->>>>>>> a9714af6db17cca0d838819c69e85ca13a810dbf
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
     'f': 'foxtrot', 'g': 'golf', 'h': 'hotel', 'i': 'india', 'j': 'juliett',
