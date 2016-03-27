@@ -20,11 +20,10 @@ def decripteaza_mesajul(mesaj):
         number_of_steps = ord(' ')
         if i.isalpha():
             number_of_steps = (ord(i)-key)
-        if ((not chr(number_of_steps).isalpha() and
-             chr(number_of_steps) != ' ') or
-             chr(number_of_steps).isupper()):
-                number_of_steps = number_of_steps + 26
+        if not 97 <= number_of_steps <= 123:
+            number_of_steps = number_of_steps + 26
         unlocked = unlocked + chr(number_of_steps)
+        unlocked.replace(':', ' ')
     print(unlocked)
 
 
