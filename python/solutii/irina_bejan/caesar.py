@@ -17,12 +17,10 @@ la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 from __future__ import print_function
 
 def decripteaza_mesajul(mesaj):
-
-    key = ord(mesaj[0]) % ord('a');
-
+    key = ord(mesaj[0]) % ord('a')
     for c in mesaj:
         if c != ' ' and c != '.':
-            print (chr( ( (ord(c) - key) - ord('a') )%26 + ord('a') ),end="")
+            print(chr(((ord(c) - key)- ord('a')) % 26 + ord('a')),end="")
         else:
             print (c, end="")
     print ('\n')
