@@ -47,7 +47,6 @@ def distanta():
             xpoint += casute
         elif mutare[0] == "STANGA":
             xpoint -= casute
-            
     print sqrt(xpoint**2 + ypoint**2)
 
 
