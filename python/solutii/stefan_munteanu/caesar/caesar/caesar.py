@@ -1,12 +1,4 @@
-"""Împãratul a primit serie de mesaje importante pe care este
-important sã le descifreze cât mai repede.
-Din pãcate mesagerul nu a apucat sã îi spunã împãratul care au fost
-cheile alese pentru fiecare mesaj ?i tu ai fost ales sã descifrezi
-misterul.
-Informa?ii:
-    În criptografie, cifrul lui Caesar este o metodã simplã de a cripta
-un mesaj prin înlocuirea fiecãrei litere cu litera de pe pozi?ia aflatã
-la un n pa?i de ea în alfabet (unde este n este un numãr întreg cunoscut
+"""Povestea povestilor
 """
 from __future__ import print_function
 
@@ -17,8 +9,7 @@ def first_word(word):
     return ord(word[0]) % 97
 
 def decripteaza_mesajul(mesaj):
-    """Func?ia va primi un mesaj criptat folosind cifrul lui Caesar ?i
-    va încearca sã îl decripteze.
+    """Fucntie cript.
     """
     words = mesaj.split('.,')
     key = first_word(words[0])
@@ -42,7 +33,7 @@ def main():
         mesaje = fisier.read()
         fisier.close()
     except IOError:
-        print("Nu am putut ob?ine mesajele.")
+        print("Nu am putut obtine mesajele.")
         return
 
     for mesaj in mesaje.splitlines():

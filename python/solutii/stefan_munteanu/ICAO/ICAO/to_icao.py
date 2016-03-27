@@ -23,9 +23,3 @@ def icao(mesaj):
             file_to_write.write(' ')
     pass
 
-
-if __name__ == "__main__":
-    """main
-    """
-    unique = raw_input('Enter your input:')
-    icao(unique)
