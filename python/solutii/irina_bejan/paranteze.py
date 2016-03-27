@@ -21,16 +21,21 @@ Câteva exemple:
 
 
 def verifica_expresia(paranteze):
+    """Verifică validitatea expresiei primite.
+
+    Verifică dacă toate parantezele din expresie
+    sunt folosite corespunzător.
+    """
     stack = []
 
     for ch in paranteze:
-        if ch == '[' or ch == '(':
+        if char == '[' or char == '(':
             stack.append(ch)
         elif len(stack) == 0:
             return False
-        elif (stack[-1] == '(') and (ch == ')'):
+        elif (stack[-1] == '(') and (char == ')'):
             stack.pop()
-        elif (stack[-1] == '[') and (ch == ']'):
+        elif (stack[-1] == '[') and (char == ']'):
             stack.pop()
     if len(stack) == 0:
         return True
