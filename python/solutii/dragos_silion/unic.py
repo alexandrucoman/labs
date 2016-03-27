@@ -31,10 +31,11 @@ def gaseste_unic(istoric):
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
     """
-    istoric.sort()
-    for i in range(0,len(istoric)):
-        if i==len(istoric)-1:
-            print str(istoric[i])
+    a=0
+    for i in istoric:
+        a = a^i
+    return a
+    
 
 
 if __name__ == "__main__":
