@@ -16,15 +16,18 @@ la un n pași de ea în alfabet (unde este n este un număr întreg cunoscut
 
 from __future__ import print_function
 
+
 def decripteaza_mesajul(mesaj):
+    """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
+    va încearca să îl decripteze.
+    """
 
-    key = ord(mesaj[0]) % ord('a');
-
-    for c in mesaj:
-        if c != ' ' and c != '.':
-            print (chr( ( (ord(c) - key) - ord('a') )%26 + ord('a') ),end="")
+    key = ord(mesaj[0]) % ord('a')
+    for char in mesaj:
+        if char != ' ' and char != '.':
+            print(chr(((ord(char) - key) - ord('a')) % 26 + ord('a')), end="")
         else:
-            print (c, end="")
+            print (char, end="")
     print ('\n')
 
 
