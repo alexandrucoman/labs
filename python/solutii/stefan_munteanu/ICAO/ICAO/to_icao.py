@@ -27,5 +27,5 @@ def icao(mesaj):
 if __name__ == "__main__":
     """main
     """
-    citeste = raw_input('Enter your input:')
-    icao(citeste)
+    unique = raw_input('Enter your input:')
+    icao(unique)
