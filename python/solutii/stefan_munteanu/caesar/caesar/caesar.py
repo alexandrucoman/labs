@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 
 
+=======
+"""Povestea povestilor
+"""
+>>>>>>> a9714af6db17cca0d838819c69e85ca13a810dbf
 from __future__ import print_function
 
 def first_word(word):

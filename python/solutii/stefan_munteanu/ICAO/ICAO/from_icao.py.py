@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-
-
-=======
 """Icao
 """
->>>>>>> a9714af6db17cca0d838819c69e85ca13a810dbf
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
     'f': 'foxtrot', 'g': 'golf', 'h': 'hotel', 'i': 'india', 'j': 'juliett',
@@ -14,15 +9,20 @@ ICAO = {
     'z': 'zulu'
 }
 
-
-def icao(mesaj):
+def din_icao():
     """Func?ia va primi calea mesajul ce trebuie transmis ?i
     va genera un fi?ier numit mesaj.icao_intrare ce va con?ine
     mesajul scris folosind alfabetul ICAO.
     """
-    file_to_write = open('mesaj.icao_intrare', 'w+')
-    for i in mesaj.lower():
-        if i.isalpha():
-            file_to_write.write(ICAO[i] + ' ')
-        elif i.isspace():
-            file_to_write.write(' ')
+    file_to_read = open("mesaj.icao_intrare", 'r')
+    mesaj = file_to_read.read()
+    file_to_write = open('mesaj.icao_iesire', 'w+')
+    for i in mesaj.splitlines():
+        if i.strip():
+            words = [x for x in i.split()]
+            for j in words:
+                file_to_write.write(j[0])
+
+
+if __name__ == "__main__":
+    din_icao()
