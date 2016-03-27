@@ -11,7 +11,8 @@ la un n pa?i de ea în alfabet (unde este n este un numãr întreg cunoscut
 from __future__ import print_function
 
 def first_word(word):
-# find ave caesar, or any other key
+    """find ave caesar, or any other key
+    """
     word.lower()
     return ord(word[0]) % 97 
 
@@ -27,7 +28,7 @@ def decripteaza_mesajul(mesaj):
         if i.isalpha():
             number_of_steps = (ord(i)-key)
         if (not chr(number_of_steps).isalpha() and chr(number_of_steps) != ' ')\
-                or (chr(number_of_steps).isupper()):
+            or (chr(number_of_steps).isupper()):
             number_of_steps = number_of_steps + 26
         unlocked = unlocked + chr(number_of_steps)
     print(unlocked)
