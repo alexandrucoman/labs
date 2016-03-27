@@ -1,3 +1,5 @@
+"""Icao
+"""
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
     'f': 'foxtrot', 'g': 'golf', 'h': 'hotel', 'i': 'india', 'j': 'juliett',
@@ -23,4 +25,6 @@ def din_icao():
 
 
 if __name__ == "__main__":
+    """main
+    """
     din_icao()

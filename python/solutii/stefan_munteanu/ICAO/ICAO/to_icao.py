@@ -1,3 +1,5 @@
+"""Icao
+"""
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
     'f': 'foxtrot', 'g': 'golf', 'h': 'hotel', 'i': 'india', 'j': 'juliett',
@@ -25,5 +27,5 @@ def icao(mesaj):
 if __name__ == "__main__":
     """main
     """
-    to_read = raw_input('Enter your input:')
-    icao(to_read)
+    citeste = raw_input('Enter your input:')
+    icao(citeste)

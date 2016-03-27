@@ -14,7 +14,7 @@ def first_word(word):
     """find ave caesar, or any other key
     """
     word.lower()
-    return ord(word[0]) % 97 
+    return ord(word[0]) % 97
 
 def decripteaza_mesajul(mesaj):
     """Func?ia va primi un mesaj criptat folosind cifrul lui Caesar ?i
@@ -32,7 +32,6 @@ def decripteaza_mesajul(mesaj):
             number_of_steps = number_of_steps + 26
         unlocked = unlocked + chr(number_of_steps)
     print(unlocked)
-
 
 def main():
     """
