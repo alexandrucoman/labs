@@ -21,15 +21,15 @@ def decripteaza_mesajul(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     va încearca să îl decripteze.
     """
-    alfabet="qwertyuiopasdfghjklzxcvbnm"
-    key=ord(mesaj[0])-32-ord('A')
-    decodificat=""
+    alfabet = "qwertyuiopasdfghjklzxcvbnm"
+    key = ord(mesaj[0]) - 32 - ord('A')
+    decodificat = ""
     print(key)
     for char in mesaj:
         if char in alfabet:
-            decodificat=decodificat+chr(((ord(char)-ord('a')-key)%26)+ord('a'))
+            decodificat = decodificat + chr(((ord(char) - ord('a') - key) % 26) + ord('a'))
         else:
-            decodificat=decodificat+char 
+            decodificat = decodificat + char 
     print(decodificat)
 
 
