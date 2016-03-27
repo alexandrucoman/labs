@@ -16,7 +16,7 @@ ultima poziție.
 El dorește un utilitar care să îi spună care este distanța dintre
 punctul de origine (0, 0) și poziția curentă a cursorului.
 """
-from math import *
+from math import sqrt
 
 
 def distanta():
@@ -34,22 +34,21 @@ def distanta():
         print("Fisierul nu a putut fi citit.")
         return
 
-    xPoint = 0
-    yPoint = 0
+    xpoint = 0
+    ypoint = 0
     for miscare in miscari.splitlines():
         mutare = miscare.split()
         casute = int(mutare[1])
-        
         if mutare[0] == "SUS":
-            yPoint -= casute
+            ypoint -= casute
         elif mutare[0] == "JOS":
-            yPoint += casute
+            ypoint += casute
         elif mutare[0] == "DREAPTA":
-            xPoint += casute
+            xpoint += casute
         elif mutare[0] == "STANGA":
-            xPoint -= casute
+            xpoint -= casute
 
-    print sqrt(xPoint*xPoint + yPoint*yPoint)
+    print sqrt(xpoint**2 + ypoint**2)
 
 
 if __name__ == "__main__":
