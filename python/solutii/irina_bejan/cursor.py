@@ -31,7 +31,7 @@ def distanta():
         miscari = fisier.read()
         fisier.close()
     except IOError:
-        print("Fisierul nu a putut fi citit.")
+        print "Fisierul nu a putut fi citit."
         return
 
     xpoint = 0
@@ -47,7 +47,7 @@ def distanta():
             xpoint += casute
         elif mutare[0] == "STANGA":
             xpoint -= casute
-
+            
     print sqrt(xpoint**2 + ypoint**2)
 
 
