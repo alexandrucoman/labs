@@ -26,6 +26,22 @@ def verifica_expresia(paranteze):
     Verifică dacă toate parantezele din expresie
     sunt folosite corespunzător.
     """
+    stack = []
+    step = 0
+    for paranthesis in paranteze:
+        if paranthesis == '[' or paranthesis == '(':
+            stack.append(paranthesis)
+        else:
+            if len(stack) == 0:
+                return False
+            last_paranthesis = stack[-1]
+            if paranthesis == ']' and last_paranthesis != '[':
+                return False
+            if paranthesis == ')' and last_paranthesis != '(':
+                return False
+            stack.pop()
+        step += 1
+    return True
 
 if __name__ == "__main__":
     assert verifica_expresia("[()[]]"), "Probleme la expresia 1"

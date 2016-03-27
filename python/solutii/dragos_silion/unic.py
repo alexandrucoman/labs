@@ -31,11 +31,10 @@ def gaseste_unic(istoric):
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
     """
-    a=0
+    total_xor = 0
     for i in istoric:
-        a = a^i
-    return a
-    
+        total_xor = total_xor^i
+    return total_xor
 
 
 if __name__ == "__main__":
