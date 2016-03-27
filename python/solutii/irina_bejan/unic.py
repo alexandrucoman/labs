@@ -33,12 +33,12 @@ def gaseste_unic(istoric):
         else:
             dic[number] = 1
 
-    for key,value in dic.iteritems():
+    for key, value in dic.iteritems():
         if value % 2 == 1:
             return key
 
 
-def gaseste_unic_fara_memorie_suplimentara(istoric):
+def gaseste_unic_versiune_doi(istoric):
     """Găsește elementul unic fara a aloca memorie suplimentara.
     Funcția primește o listă cu elemente numerice și trebuie
     să returneze elementul care nu este duplicat.
@@ -47,22 +47,22 @@ def gaseste_unic_fara_memorie_suplimentara(istoric):
         1 1 1 2 2 - 1
     """
     istoric.sort()
-    lg = len(istoric)
+    length = len(istoric)
 
     contor = 1
     index = 1
 
-    while index < lg:
+    while index < length:
         if istoric[index] == istoric[index-1]:
             contor += 1
         else:
-            if contor%2 == 1:
+            if contor % 2 == 1:
                 return istoric[index-1]
             contor = 1
         index += 1
 
     if contor % 2 == 1:
-        return istoric[lg-1]
+        return istoric[length-1]
 
 
 if __name__ == "__main__":
