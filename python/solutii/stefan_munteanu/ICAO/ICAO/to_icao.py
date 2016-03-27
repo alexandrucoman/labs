@@ -1,3 +1,5 @@
+"""Icao
+"""
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
     'f': 'foxtrot', 'g': 'golf', 'h': 'hotel', 'i': 'india', 'j': 'juliett',
@@ -19,9 +21,3 @@ def icao(mesaj):
             file_to_write.write(ICAO[i] + ' ')
         elif i.isspace():
             file_to_write.write(' ')
-    pass
-
-
-if __name__ == "__main__":
-    read_word_to_icao=raw_input('Enter your input:')
-    icao(read_word_to_icao)
