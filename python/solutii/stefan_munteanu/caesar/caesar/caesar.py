@@ -1,5 +1,5 @@
-"""Povestea povestilor
-"""
+
+
 from __future__ import print_function
 
 def first_word(word):
