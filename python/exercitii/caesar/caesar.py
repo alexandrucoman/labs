@@ -26,10 +26,10 @@ def decripteaza_mesajul(mesaj):
     decodificat=""
     print(key)
     for char in mesaj:
-        if char in alfabet :
-            decodificat=decodificat + chr(((ord(char) - ord('a') - key ) % 26 ) + ord('a') )
+        if char in alfabet:
+            decodificat=decodificat+chr(((ord(char)-ord('a')-key)%26)+ord('a'))
         else:
-            decodificat=decodificat + char 
+            decodificat=decodificat+char 
     print(decodificat)
 
 
