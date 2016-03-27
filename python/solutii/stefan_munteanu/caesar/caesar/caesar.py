@@ -12,7 +12,7 @@ la un n pa?i de ea în alfabet (unde este n este un numãr întreg cunoscut
 
 from __future__ import print_function
 
-def FirstWord(word):
+def first_word(word):
 # find ave caesar, or any other key
     word.lower()
     return ord(word[0]) % 97 
@@ -22,18 +22,17 @@ def decripteaza_mesajul(mesaj):
     va încearca sã îl decripteze.
     """
     words = mesaj.split('.,')
-    key = FirstWord(words[0])
+    key = first_word(words[0])
     unlocked = ' '
     for i in mesaj.lower():
-        nr = ord(' ')
+        NumberOfSteps = ord(' ')
         if i.isalpha():
-            nr = (ord(i)-key)
-        if (not chr(nr).isalpha() and chr(nr) != ' ')\
-                or (chr(nr).isupper()):
-            nr =  nr + 26
-        unlocked = unlocked + chr(nr)
+            NumberOfSteps = (ord(i)-key)
+        if (not chr(NumberOfSteps).isalpha() and chr(NumberOfSteps) != ' ')\
+                or (chr(NumberOfSteps).isupper()):
+            NumberOfSteps = NumberOfSteps + 26
+        unlocked = unlocked + chr(NumberOfSteps)
     print(unlocked)
-    pass
 
 
 def main():

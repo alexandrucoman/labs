@@ -13,12 +13,12 @@ def icao(mesaj):
     va genera un fi?ier numit mesaj.icao_intrare ce va con?ine
     mesajul scris folosind alfabetul ICAO.
     """
-    file = open('mesaj.icao_intrare', 'w+')
+    file_to_write = open('mesaj.icao_intrare', 'w+')
     for i in mesaj.lower():
         if i.isalpha():
-            file.write(ICAO[i] + ' ')
+            file_to_write.write(ICAO[i] + ' ')
         elif i.isspace():
-            file.write(' ')
+            file_to_write.write(' ')
     pass
 
 
