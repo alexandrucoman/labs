@@ -1,12 +1,4 @@
-<<<<<<< fb9f1b711dd83947ca8d071746fe22677b266648:python/solutii/stefan_munteanu/ICAO/ICAO/from_icao.py
 """Rezolv icao"""
-=======
-<<<<<<< HEAD
-"""Icao"""
-=======
-"""Rezolv icao"""
->>>>>>> a9b5cf5... Fix7
->>>>>>> caesar:python/solutii/stefan_munteanu/ICAO/ICAO/from_icao.py
 
 
 ICAO = {
@@ -35,11 +27,4 @@ def din_icao():
 
 
 if __name__ == "__main__":
-<<<<<<< fb9f1b711dd83947ca8d071746fe22677b266648:python/solutii/stefan_munteanu/ICAO/ICAO/from_icao.py
-=======
-<<<<<<< HEAD:python/solutii/stefan_munteanu/ICAO/ICAO/from_icao.py
-    """main"""
-=======
->>>>>>> a9714af... Fix7:python/solutii/stefan_munteanu/ICAO/ICAO/from_icao.py.py
->>>>>>> caesar:python/solutii/stefan_munteanu/ICAO/ICAO/from_icao.py
     din_icao()

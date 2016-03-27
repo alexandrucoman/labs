@@ -1,15 +1,4 @@
-<<<<<<< fb9f1b711dd83947ca8d071746fe22677b266648:python/solutii/stefan_munteanu/ICAO/ICAO/to_icao.py
 """Rezolv icao """
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-"""Icao"""
-=======
->>>>>>> 2cd989b... Fix7
-=======
-"""Rezolv icao """
->>>>>>> a9b5cf5... Fix7
->>>>>>> caesar:python/solutii/stefan_munteanu/ICAO/ICAO/to_icao.py
 
 
 ICAO = {
@@ -33,13 +22,3 @@ def icao(mesaj):
             file_to_write.write(ICAO[i] + ' ')
         elif i.isspace():
             file_to_write.write(' ')
-<<<<<<< fb9f1b711dd83947ca8d071746fe22677b266648:python/solutii/stefan_munteanu/ICAO/ICAO/to_icao.py
-=======
-
-
-if __name__ == "__main__":
-    """main"""
-    unique = raw_input('Enter your input:')
-    icao(unique)
-
->>>>>>> caesar:python/solutii/stefan_munteanu/ICAO/ICAO/to_icao.py
