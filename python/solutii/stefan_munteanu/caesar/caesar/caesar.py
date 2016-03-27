@@ -25,8 +25,7 @@ def decripteaza_mesajul(mesaj):
     print(unlocked)
 
 def main():
-    """
-    The main function
+    """The main function
     """
     try:
         fisier = open("mesaje.secret", "r")
@@ -40,7 +39,6 @@ def main():
         decripteaza_mesajul(mesaj)
 
 if __name__ == "__main__":
-    """
-    main
+    """main
     """
     main()

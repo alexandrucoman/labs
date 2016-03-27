@@ -21,5 +21,3 @@ def icao(mesaj):
             file_to_write.write(ICAO[i] + ' ')
         elif i.isspace():
             file_to_write.write(' ')
-    pass
-
