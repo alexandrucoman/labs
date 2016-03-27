@@ -23,5 +23,7 @@ def icao(mesaj):
 
 
 if __name__ == "__main__":
-    read_word_to_icao = raw_input('Enter your input:')
-    icao(read_word_to_icao)
+    """main
+    """
+    to_read = raw_input('Enter your input:')
+    icao(to_read)

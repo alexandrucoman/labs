@@ -14,5 +14,8 @@ def history(mesaj):
     return unique
 
 if __name__ == "__main__":
+    """
+    main
+    """
     history([1, 2, 3, 2, 1])
     history([1, 1, 1, 2, 2])
