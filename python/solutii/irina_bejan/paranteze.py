@@ -31,13 +31,13 @@ def verifica_expresia(paranteze):
     for char in paranteze:
         if char == '[' or char == '(':
             stack.append(char)
-        elif len(stack) == 0:
+        elif not stack:
             return False
         elif (stack[-1] == '(') and (char == ')'):
             stack.pop()
         elif (stack[-1] == '[') and (char == ']'):
             stack.pop()
-    if len(stack) == 0:
+    if not stack:
         return True
     return False
 
