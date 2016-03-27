@@ -28,7 +28,7 @@ def gaseste_unic(istoric):
     """
     dic = {}
     for number in istoric:
-        if dic.has_key(number):
+        if number in dic:
             dic[number] += 1
         else:
             dic[number] = 1
