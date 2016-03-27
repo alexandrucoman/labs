@@ -22,13 +22,11 @@ def decripteaza_mesajul(mesaj):
     va încearca să îl decripteze.
     """
     alfabet = "qwertyuiopasdfghjklzxcvbnm"
-    key = ord(mesaj[0]) - 32 - ord('A')
+    k = ord(mesaj[0]) - 32 - ord('A')
     decodificat = ""
-    print(key)
     for char in mesaj:
         if char in alfabet:
-            decodificat = decodificat + chr(((ord(char) - ord('a') - key) \
-            % 26) + ord('a'))
+            decodificat = decodificat + chr(((ord(char) - 97 - k) % 26) + 97)
         else:
             decodificat = decodificat + char
     print(decodificat)
