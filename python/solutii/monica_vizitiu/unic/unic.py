@@ -31,9 +31,11 @@ def gaseste_unic(istoric):
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
     """
+    result = istoric.pop()
     for numar in istoric:
-        if istoric.count(numar)==1:
-            return numar
+        result = result ^ numar
+        
+    return numar
 
 
 if __name__ == "__main__":
