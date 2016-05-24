@@ -33,11 +33,10 @@ def gaseste_unic(istoric):
     """
     result = istoric.pop()
     for numar in istoric:
-        result = result ^ numar
-        
-    return numar
+        result = result ^ numar    
+    return result
 
 
 if __name__ == "__main__":
-    assert gaseste_unic([1, 2, 3, 2, 1]) == 3
-    assert gaseste_unic([1, 1, 1, 2, 2]) == 1, "Nu exista element unic!"
+    print gaseste_unic([1, 2, 3, 2, 1]) == 3
+    print gaseste_unic([1, 1, 1, 2, 2]) == 1
