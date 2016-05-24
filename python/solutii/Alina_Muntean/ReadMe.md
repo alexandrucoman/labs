@@ -1,0 +1,1 @@
+Astazi am inceput sa invat python.
