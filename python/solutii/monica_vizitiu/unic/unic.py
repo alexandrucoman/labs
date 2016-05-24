@@ -38,5 +38,5 @@ def gaseste_unic(istoric):
 
 
 if __name__ == "__main__":
-    print gaseste_unic([1, 2, 3, 2, 1]) == 3
-    print gaseste_unic([1, 1, 1, 2, 2]) == 1
+    assert gaseste_unic([1, 2, 3, 2, 1]) == 3
+    assert gaseste_unic([1, 1, 1, 2, 2]) == 1
