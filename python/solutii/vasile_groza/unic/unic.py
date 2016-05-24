@@ -41,11 +41,34 @@ def gaseste_unic(istoric):
 
     for index in range(0, len(accesari)):
         if accesari[index] % 2 == 1:
-            idHardWork = index
+            idHardWorker = index
     print (idHardWorker)
     return idHardWorker
 
+def gaseste_unic_2(istoric):
+    """Găsește elementul unic.
+
+    Funcția primește o listă cu elemente numerice și trebuie
+    să returneze elementul care nu este duplicat.
+
+    Exemple:
+        1 2 3 2 1 - 3
+        1 1 1 2 2 - 1
+        :type istoric: object
+    """
+
+    """
+    print type(istoric)
+    pass
+    """
+    idHardWorker = -1
+    for id in istoric:
+        if 1 == (istoric.count(id))%2:
+            idHardWorker = id
+    print (idHardWorker)
+    return idHardWorker
 
 if __name__ == "__main__":
-    assert gaseste_unic([1, 2, 3, 2, 1]) == 3
-    assert gaseste_unic([1, 1, 1, 2, 2]) == 1
+
+    assert gaseste_unic_2([1, 2, 3, 2, 1]) == 3
+    assert gaseste_unic_2([1, 1, 1, 2, 2]) == 1
