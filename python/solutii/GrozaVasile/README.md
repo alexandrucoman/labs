@@ -1,3 +1,6 @@
+
+M-au fortat sa rezolv aceste probleme 
+
 Soluții propuse
 ---------------
 
