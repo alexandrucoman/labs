@@ -61,10 +61,9 @@ def gaseste_unic_2(istoric):
     print type(istoric)
     pass
     """
-    idHardWorker = -1
-    for id in istoric:
-        if 1 == (istoric.count(id))%2:
-            idHardWorker = id
+    idHardWorker =istoric.pop()
+    while istoric:
+        idHardWorker^=istoric.pop();
     print (idHardWorker)
     return idHardWorker
 
