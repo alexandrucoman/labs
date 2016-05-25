@@ -26,7 +26,15 @@ def verifica_expresia(paranteze):
     Verifică dacă toate parantezele din expresie
     sunt folosite corespunzător.
     """
-    pass
+    stack=[]
+    for p in paranteze:
+	if p=="[" or p=="(":
+	    stack.append(p)
+	elif p=="]" and (not stack or stack.pop()!="["):
+		return 0
+	elif p==")" and (not stack or stack.pop()!="("):
+		return 0
+    return 1
 
 
 if __name__ == "__main__":
