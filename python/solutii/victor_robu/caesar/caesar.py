@@ -25,13 +25,13 @@ def decripteaza_mesajul(mesaj):
     global primCar
     if primCar < 0:
 	for deplasare in range(noOfChars):
-	    buf=""
+	    buf_list=[]
 	    for litera in mesaj:
              	if litera.isalpha():
-		    buf+=chr((ord(litera)+deplasare-ord('a'))%noOfChars + ord('a')) 
+		    buf_list.append(chr((ord(litera)+deplasare-ord('a'))%noOfChars + ord('a'))) 
 	        else:
-		    buf+=litera
-	    print(deplasare,": ",buf)
+		    buf_list.append(litera)
+	    print("%d : %s"%(deplasare,"".join(buf_list)))
 	flag = 1
 	while flag:
 	     print ("Alegeti unul din siruri introducand un numar intre 0 si",noOfChars-1)
@@ -45,13 +45,13 @@ def decripteaza_mesajul(mesaj):
 	primCar=(ord(mesaj[0])+opt-ord('a'))%noOfChars
     else:
 	cheieInv=(primCar-ord(mesaj[0])+ord('a'))%noOfChars
-	buf=""
+	buf_list=[]
 	for litera in mesaj:
 	    if litera.isalpha():
-		buf+=chr((ord(litera)+cheieInv-ord('a'))%noOfChars + ord('a'))
+		buf_list.append(chr((ord(litera)+cheieInv-ord('a'))%noOfChars + ord('a')))
 	    else:
-		buf+=litera
-	print("Cheie :",noOfChars-cheieInv,". Mesaj :",buf)
+		buf_list.append(litera)
+	print("Cheie  : %d. Mesaj : %s"%(noOfChars-cheieInv,"".join(buf_list)))
 
 def main():
     """ Main function docstring """
