@@ -9,3 +9,4 @@ Exercitii rezolvate in cadrul CloudbaseLABS#3
 
 Exercitii extra
 - [puterea a lui doi](extra/putere/)
+- [tree](extra/tree/)
