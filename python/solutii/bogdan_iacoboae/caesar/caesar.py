@@ -17,21 +17,21 @@ def real_letter(character, key):
     else:
         return character
 
-def decripteaza_mesajul(mesaj,file):
+def decripteaza_mesajul(mesaj,fisier):
     key = afla_pasul(mesaj)
     puncte = 0.
     for index in mesaj:
         if index==".":
             if puncte == 1 :
                 print ".\n"
-                file.write("\n")
+                fisier.write("\n")
             else:
                 puncte = puncte +1
                 print ".",
-                file.write(".")
+                fisier.write(".")
         else:
             print real_letter(index,key),
-            file.write(real_letter(index,key))
+            fisier.write(real_letter(index,key))
 
 
 
