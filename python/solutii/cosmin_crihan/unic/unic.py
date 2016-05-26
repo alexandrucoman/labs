@@ -18,7 +18,7 @@ Cerințe:
     II. Găsește cercetătorul ce stă peste program după o singură
     parcurgere a listei și fără a aloca memorie suplimentară.
 """
-# pylint: disable=unused-argument
+
 
 def gaseste_unic_I(istoric):
     """Găsește elementul unic.
@@ -31,16 +31,17 @@ def gaseste_unic_I(istoric):
         1 1 1 2 2 - 1
     """
 
-    vfreq = []  # vector de frecventa
+    dfreq = {}  # dictionar de frecvente
     for element in istoric:
-        if 0 <= element - 1 < len(vfreq):  # incercam sa gasim indexul elementului in vectorul de frecventa
-            vfreq[element - 1] += 1  # elementul exista, deci incrementam numarul de aparitii
+        if dfreq.has_key(element - 1):  # incercam sa gasim indexul elementului in dictionarul de frecventa
+            dfreq[element - 1] += 1  # elementul exista, deci incrementam numarul de aparitii
         else:  # cand elementul nu este gasit, il adaugam
-            vfreq.insert(element - 1, 1)  # adaugam 1 in pozitia corespunzatoare din vectorul de frecventa
+            dfreq[element - 1] = 1  # adaugam 1 in pozitia corespunzatoare din dictionarul de frecventa
 
     for element in istoric:
-        if vfreq[element - 1] % 2 != 0:  # daca elementul apare de un numar impar de ori
+        if dfreq[element - 1] % 2 != 0:  # daca elementul apare de un numar impar de ori
             return element  # acela este elementul unic
+
 
 def gaseste_unic_II(istoric):
     """Găsește elementul unic.

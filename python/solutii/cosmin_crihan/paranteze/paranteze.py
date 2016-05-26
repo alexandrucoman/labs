@@ -30,10 +30,12 @@ def verifica_expresia(paranteze):
     stiva=[]
 
     for caracter in paranteze:
-        if caracter == '(' or caracter == '[' or caracter == '{': # daca paranteza este deschisa
-            stiva.append(caracter) # o pun in stiva
-        elif caracter == ')': # daca paranteza este inchisa, ea trebuie sa corespunda cu ce am scos din stiva, pentru a fi inchisa corespunzator
-            if not stiva or stiva.pop(-1) != '(': # dar stiva nu trebuie sa fie goala cand se face pop() (cazul in care expresia incepe cu paranteza inchisa)
+        if caracter == '(' or caracter == '[' or caracter == '{':  # daca paranteza este deschisa
+            stiva.append(caracter)  # o pun in stiva
+        elif caracter == ')':  # daca paranteza este inchisa, ea trebuie sa corespunda cu ce am scos din stiva,
+            # pentru a fi inchisa corespunzator
+            if not stiva or stiva.pop(-1) != '(':  # dar stiva nu trebuie sa fie goala cand se face pop()
+                # (cazul in care expresia incepe cu paranteza inchisa)
                 return False
         elif caracter == ']':
             if not stiva or stiva.pop(-1) != '[':

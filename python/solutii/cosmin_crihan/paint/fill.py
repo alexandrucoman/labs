@@ -21,7 +21,8 @@ umplem formele în care se află "x":
   |-----*---*-x|          |-----*---*--|         |-----*---***|
 
 """
-# pylint: disable=unused-argument
+
+from __future__ import print_function
 
 
 def umple_forma(imagine, punct):
@@ -33,7 +34,7 @@ def umple_forma(imagine, punct):
     """
 
     # validam coordonatele punctului curent (sa nu depaseasca dimensiunile imaginii)
-    if punct[0] >= 0 and punct[0] <= len(imagine) - 1 and punct[1] >= 0 and punct[1] <= len(imagine[0]) - 1 \
+    if 0 <= punct[0] <= len(imagine) - 1 and 0 <= punct[1] <= len(imagine[0]) - 1 \
         and imagine[punct[0]][punct[1]] != "*":  # si sa nu fie "perete" acolo
         imagine[punct[0]][punct[1]] = "*"  # adaugam steluta
         # si apelam recursiv functia de umplere in cele 4 directii
@@ -42,11 +43,13 @@ def umple_forma(imagine, punct):
         umple_forma(imagine, (punct[0], punct[1] + 1))  # SUS
         umple_forma(imagine, (punct[0], punct[1] - 1))  # JOS
 
+
 def afisare_imagine(imaginea):
     for linie in imaginea:
         for element in linie:
-            print(element),
-        print("\n")
+            print(element, end='')
+        print("\n", end='')
+
 
 def main():
     """  Main function docstring """
@@ -64,14 +67,13 @@ def main():
 
     umple_forma(imaginea, (1, 3))
 
-    print("Imaginea dupa prima umplere: \n")
+    print("\nImaginea dupa prima umplere: \n")
     afisare_imagine(imaginea)
 
     umple_forma(imaginea, (5, 11))
 
-    print("Imaginea dupa a doua umplere: \n")
+    print("\nImaginea dupa a doua umplere: \n")
     afisare_imagine(imaginea)
-
 
 if __name__ == "__main__":
     main()

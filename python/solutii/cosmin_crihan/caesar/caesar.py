@@ -12,7 +12,6 @@ Informații:
 un mesaj prin înlocuirea fiecărei litere cu litera de pe poziția aflată
 la n pași de ea în alfabet (unde este n este un număr întreg cunoscut)
 """
-# pylint: disable=unused-argument
 
 from __future__ import print_function
 
@@ -22,7 +21,7 @@ def decripteaza_mesajul(mesaj):
     va încerca să îl decripteze.
     """
 
-    decriptat = ""  # mesajul decriptat
+    decriptat = []  # mesajul decriptat (lista de caractere)
 
     for n in range(1, 26):  # 26 de litere (mici) posibile in alfabetul englez
 
@@ -32,26 +31,28 @@ def decripteaza_mesajul(mesaj):
             else:
                 index_litera = (ord(litera) - ord('a') + n) % 26
                 litera_decriptata = chr(index_litera + ord('a'))
-            decriptat += litera_decriptata
+            decriptat.append(litera_decriptata)
 
         print("\nIncercare n=%d:" % n)
 
-        print("%s\n" % decriptat)
+        for litera in decriptat:
+            print(litera, end='')
 
-        plauzibil = input('Plauzibil? (da=1/nu=0) ')  # intrebam utilizatorul daca mesajul e lizibil
-        if plauzibil == 1:
+        plauzibil = raw_input('\n\nPlauzibil? (da/nu) ')  # intrebam utilizatorul daca mesajul e lizibil
+        if plauzibil.lower() == "da":
             break
         else:
-            decriptat = ""
+            decriptat = []
 
-    return decriptat
+    return "".join(decriptat)
+
 
 def decripteaza_mesajul_n(mesaj, n):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     îl va decripta folosind cheia n trimisa ca parametru
     """
 
-    decriptat = ""
+    decriptat = []
 
     for litera in mesaj:  # decriptam fiecare litera in parte
         if litera in "., ":  # cu exceptia semnelor de punctuatie
@@ -60,12 +61,12 @@ def decripteaza_mesajul_n(mesaj, n):
             # indicele literei in alfabet = ord(litera) - ord('a')
             index_litera = (ord(litera) - ord('a') + n) % 26
             litera_decriptata = chr(index_litera + ord('a'))
-        decriptat += litera_decriptata
+        decriptat.append(litera_decriptata)
 
-    return decriptat
+    return "".join(decriptat)
+
 
 def main():
-
 
     """ Main function docstring """
     try:
@@ -77,18 +78,19 @@ def main():
         return
 
     try:
-        mesaje_decriptate = open("mesaje.decriptate", "a")
+        mesaje_decriptate = open("mesaje.decriptate", "w")
     except IOError:
         print("Nu pot deschide fisierul de scriere a mesajelor decriptate.")
+        return
 
-    i=1
+    i = 1
     for mesaj in mesaje.splitlines():
         if i == 1:  # primul mesaj il decriptam prin incercari
             mesaje_decriptate.write("%s\n" % decripteaza_mesajul(mesaj))
         else:  # urmatoarele mesaje le decriptam prin formula: n=26-indice_prima_litera
             cheie = 26 - (ord(mesaj[0]) - ord('a'))
             mesaje_decriptate.write("%s\n" % decripteaza_mesajul_n(mesaj, cheie))
-        i = i + 1
+        i += 1
 
     mesaje_decriptate.close()
 

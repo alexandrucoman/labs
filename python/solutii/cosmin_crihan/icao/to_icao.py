@@ -17,7 +17,6 @@ Următoarea sarcină ți-a fost asignată:
 
 Mai jos găsiți un dicționar ce conține o versiune a alfabetului ICAO:
 """
-# pylint: disable=unused-argument
 
 ICAO = {
     'a': 'alfa', 'b': 'bravo', 'c': 'charlie', 'd': 'delta', 'e': 'echo',
@@ -29,30 +28,31 @@ ICAO = {
 }
 
 
-def icao():
+def icao(mesaj):
     """Funcția va primi calea mesajului ce trebuie transmis și
     va genera un fișier numit mesaj.icao_intrare ce va conține
     mesajul scris folosind alfabetul ICAO.
     """
 
     try:
-        fisier = open("mesaj", "r")  # deschidem fisierul pentru citirea mesajului
-        mesaj = fisier.read()  # punem mesajul din fisier intr-o variabila
+        fisier = open(mesaj, "r")  # deschidem fisierul pentru citirea mesajului
+        msg = fisier.read()  # punem mesajul din fisier intr-o variabila
         fisier.close()
     except IOError:
         print("Nu s-a putut deschide fisierul cu mesajul!")
-        exit()
+        return
 
     try:
         fisier_icao = open("mesaj.icao", "w")  # deschidem fisierul pentru scrierea mesajului criptat
     except IOError:
         print("Nu s-a putut deschide fisierul de iesire!")
+        return
 
-    chr_vechi = mesaj[0]
-    for chr in mesaj:  # parcurgem caracter cu caracter
+    chr_vechi = msg[0]
+    for chr in msg:  # parcurgem caracter cu caracter
         if chr in " .,;:?!":  # semnele de punctuatie nu le luam in considerare
             if chr_vechi in " .,;:?!":
-                fisier_icao.write(chr + "\n") # daca s-a intalnit un astfel de caracter special, il scriem pe o linie separata
+                fisier_icao.write(chr + "\n")  # daca s-a intalnit un astfel de caracter special, il scriem pe o linie separata
                 # cazul cand exista cel putin 2 caractere speciale unul dupa altul
             else:
                 fisier_icao.write("\n" + chr + "\n")
@@ -60,7 +60,7 @@ def icao():
         elif chr == '\n':  # trecem la linie noua
             fisier_icao.write("\n")
 
-        if chr <= 'z' and chr >= 'a':  # caracterul este litera
+        if 'a' <= chr <= 'z':  # caracterul este litera
             fisier_icao.write(ICAO[chr] + ", ")  # scriem codificarea ICAO si separam litera de urmatoarea prin virgula
 
         chr_vechi = chr
@@ -68,4 +68,4 @@ def icao():
     fisier_icao.close()
 
 if __name__ == "__main__":
-    icao()
+    icao("mesaj")

@@ -35,19 +35,20 @@ def din_icao(mesaj):
     """
 
     try:
-        fisier = open("mesaj.icao", "r")  # deschidem fisierul pentru citirea mesajului criptat ICAO
-        mesaj = fisier.read().splitlines()  # punem liniile din fisier intr-o lista de string-uri
+        fisier = open(mesaj, "r")  # deschidem fisierul pentru citirea mesajului criptat ICAO
+        msg = fisier.read().splitlines()  # punem liniile din fisier intr-o lista de string-uri
         fisier.close()
     except IOError:
         print("Nu s-a putut deschide fisierul cu mesajul ICAO!")
-        exit()
+        return
 
     try:
         fisier_initial = open("icao_intrare", "w")  # deschidem fisierul pentru scrierea mesajului initial
     except IOError:
         print("Nu s-a putut deschide fisierul de scriere!")
+        return
 
-    for linie in mesaj:  # parcurgem fiecare din liniile din fisier
+    for linie in msg:  # parcurgem fiecare din liniile din fisier
         if not linie:  # linie fara niciun caracter = interlinie
             fisier_initial.write("\n")
         elif linie[0] in " .,;:?!":  # caracter special

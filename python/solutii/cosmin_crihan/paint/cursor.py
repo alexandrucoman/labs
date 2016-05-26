@@ -25,6 +25,7 @@ punctul de origine (0, 0) și poziția curentă a cursorului.
 
 from math import sqrt
 
+
 def distanta():
     """
     Calculează distanța dintre origine și poziția curentă.
@@ -38,24 +39,31 @@ def distanta():
         comenzi = fisier.read().splitlines()
     except IOError:
         print("Nu am putut deschide fisierul cu comenzi!")
-        exit()
+        return
     fisier.close()
 
     pozitie_finala = [0, 0]
 
     for linie in comenzi:
-        comm_val = linie.split(" ")
+        comm = linie.split(" ")
 
-        if comm_val[0] == "STANGA":
-            pozitie_finala[0] -= int(comm_val[1])
-        elif comm_val[0] == "DREAPTA":
-            pozitie_finala[0] += int(comm_val[1])
-        elif comm_val[0] == "SUS":
-            pozitie_finala[1] += int(comm_val[1])
-        elif comm_val[0] == "JOS":
-            pozitie_finala[1] -= int(comm_val[1])
+        # validare comanda citita din fisier
+        if len(comm) != 2 \
+                or comm[0] not in ("STANGA", "DREAPTA", "SUS", "JOS") \
+                or not comm[1].isdigit():
+            print("Comanda invalida: %s" % comm)
+            return
+
+        if comm[0] == "STANGA":
+            pozitie_finala[0] -= int(comm[1])
+        elif comm[0] == "DREAPTA":
+            pozitie_finala[0] += int(comm[1])
+        elif comm[0] == "SUS":
+            pozitie_finala[1] += int(comm[1])
+        elif comm[0] == "JOS":
+            pozitie_finala[1] -= int(comm[1])
 
     return sqrt(pozitie_finala[0] ** 2 + pozitie_finala[1] ** 2)
 
 if __name__ == "__main__":
-    print "Distanta dintre punctul initial (0, 0) si punctul final este: %f" % distanta()
+    print "\nDistanta dintre punctul initial (0, 0) si punctul final este: %f" % distanta()

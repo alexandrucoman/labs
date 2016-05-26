@@ -5,6 +5,7 @@
 from os import listdir, path
 from shutil import copy, copytree
 
+
 def sync_uni(fisier1, fisier2):
 
     # obtinem listele de fisiere din ambele directoare
@@ -21,7 +22,7 @@ def sync_uni(fisier1, fisier2):
         elif path.isdir(f_cu_cale):  # daca este folder
             if f not in lista_f2:  # si nu este in directorul al doilea
                 folder_dest = path.join(fisier2, f)  # construim folderul destinatie cu cale completa
-                copytree(f_cu_cale, folder_dest) # il copiem recursiv in folderul dat de al doilea parametru (din nivelul curent de parcurgere)
+                copytree(f_cu_cale, folder_dest)  # il copiem recursiv in folderul dat de al doilea parametru (din nivelul curent de parcurgere)
             else:
                 sync_uni(f_cu_cale, f_cu_cale)  # daca exista in ambele directoare, continuam parcurgerea in adancime
 

@@ -5,6 +5,7 @@
 from os import listdir, path
 from shutil import copy, copytree
 
+
 def sync_bi(fisier1, fisier2):
 
     # obtinem listele de fisiere din ambele directoare
@@ -14,7 +15,6 @@ def sync_bi(fisier1, fisier2):
     # directia folder1 -> folder2
     for f1 in lista_f1:  # parcurgem lista de fisiere din directorul 1
         f1_cu_cale = path.join(fisier1, f1)  # construim calea completa a fisierului curent din parcurgere
-
 
         if path.isfile(f1_cu_cale):  # daca este fisier
             if f1 not in lista_f2:  # si nu este in directorul al doilea
