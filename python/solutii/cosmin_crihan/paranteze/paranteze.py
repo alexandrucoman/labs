@@ -18,7 +18,7 @@ Câteva exemple:
     - [)]()[(]  nu este bine
 """
 # pylint: disable=unused-argument
-        
+
 
 def verifica_expresia(paranteze):
     """Verifică validitatea expresiei primite.
@@ -27,14 +27,17 @@ def verifica_expresia(paranteze):
     sunt folosite corespunzător.
     """
 
-    stiva=[]
+    stiva = []
 
     for caracter in paranteze:
-        if caracter == '(' or caracter == '[' or caracter == '{':  # daca paranteza este deschisa
+        # daca paranteza este deschisa
+        if caracter == '(' or caracter == '[' or caracter == '{':
             stiva.append(caracter)  # o pun in stiva
-        elif caracter == ')':  # daca paranteza este inchisa, ea trebuie sa corespunda cu ce am scos din stiva,
-            # pentru a fi inchisa corespunzator
-            if not stiva or stiva.pop(-1) != '(':  # dar stiva nu trebuie sa fie goala cand se face pop()
+        elif caracter == ')':
+            # daca paranteza este inchisa, ea trebuie sa corespunda
+            # cu ce am scos din stiva, pentru a fi inchisa corespunzator
+            if not stiva or stiva.pop(-1) != '(':
+                # dar stiva nu trebuie sa fie goala cand se face pop()
                 # (cazul in care expresia incepe cu paranteza inchisa)
                 return False
         elif caracter == ']':

@@ -23,22 +23,24 @@ def decripteaza_mesajul(mesaj):
 
     decriptat = []  # mesajul decriptat (lista de caractere)
 
-    for n in range(1, 26):  # 26 de litere (mici) posibile in alfabetul englez
+    # 26 de litere (mici) posibile in alfabetul englez
+    for n_cheie in range(1, 26):
 
         for litera in mesaj:  # decriptam fiecare litera in parte
             if litera in "., ":  # cu exceptia semnelor de punctuatie
                 litera_decriptata = litera
             else:
-                index_litera = (ord(litera) - ord('a') + n) % 26
+                index_litera = (ord(litera) - ord('a') + n_cheie) % 26
                 litera_decriptata = chr(index_litera + ord('a'))
             decriptat.append(litera_decriptata)
 
-        print("\nIncercare n=%d:" % n)
+        print("\nIncercare n=%d:" % n_cheie)
 
         for litera in decriptat:
             print(litera, end='')
 
-        plauzibil = raw_input('\n\nPlauzibil? (da/nu) ')  # intrebam utilizatorul daca mesajul e lizibil
+        # intrebam utilizatorul daca mesajul e lizibil
+        plauzibil = raw_input('\n\nPlauzibil? (da/nu) ')
         if plauzibil.lower() == "da":
             break
         else:
@@ -47,7 +49,7 @@ def decripteaza_mesajul(mesaj):
     return "".join(decriptat)
 
 
-def decripteaza_mesajul_n(mesaj, n):
+def decripteaza_mesajul_n(mesaj, n_cheie):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
     îl va decripta folosind cheia n trimisa ca parametru
     """
@@ -59,7 +61,7 @@ def decripteaza_mesajul_n(mesaj, n):
             litera_decriptata = litera
         else:
             # indicele literei in alfabet = ord(litera) - ord('a')
-            index_litera = (ord(litera) - ord('a') + n) % 26
+            index_litera = (ord(litera) - ord('a') + n_cheie) % 26
             litera_decriptata = chr(index_litera + ord('a'))
         decriptat.append(litera_decriptata)
 
@@ -87,14 +89,18 @@ def main():
     for mesaj in mesaje.splitlines():
         if i == 1:  # primul mesaj il decriptam prin incercari
             mesaje_decriptate.write("%s\n" % decripteaza_mesajul(mesaj))
-        else:  # urmatoarele mesaje le decriptam prin formula: n=26-indice_prima_litera
+        else:
+            # urmatoarele mesaje le decriptam prin formula:
+            # n = 26 - indice_prima_litera
             cheie = 26 - (ord(mesaj[0]) - ord('a'))
-            mesaje_decriptate.write("%s\n" % decripteaza_mesajul_n(mesaj, cheie))
+            mesaje_decriptate.write("%s\n" %
+                                    decripteaza_mesajul_n(mesaj, cheie))
         i += 1
 
     mesaje_decriptate.close()
 
-    print("\nMesajele au fost decriptate si plasate in fisierul \"mesaje.decriptate\"!")
+    print("\nMesajele au fost decriptate si plasate in fisierul "
+          "\"mesaje.decriptate\"!")
 
 if __name__ == "__main__":
     main()

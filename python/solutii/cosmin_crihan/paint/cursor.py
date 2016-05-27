@@ -38,7 +38,7 @@ def distanta():
         fisier = open("istoric.tuxy", "r")
         comenzi = fisier.read().splitlines()
     except IOError:
-        print("Nu am putut deschide fisierul cu comenzi!")
+        print "Nu am putut deschide fisierul cu comenzi!"
         return
     fisier.close()
 
@@ -51,7 +51,7 @@ def distanta():
         if len(comm) != 2 \
                 or comm[0] not in ("STANGA", "DREAPTA", "SUS", "JOS") \
                 or not comm[1].isdigit():
-            print("Comanda invalida: %s" % comm)
+            print "Comanda invalida: %s" % comm
             return
 
         if comm[0] == "STANGA":
@@ -66,4 +66,5 @@ def distanta():
     return sqrt(pozitie_finala[0] ** 2 + pozitie_finala[1] ** 2)
 
 if __name__ == "__main__":
-    print "\nDistanta dintre punctul initial (0, 0) si punctul final este: %f" % distanta()
+    print "\nDistanta dintre punctul initial (0, 0) si punctul final este: %f"\
+          % distanta()

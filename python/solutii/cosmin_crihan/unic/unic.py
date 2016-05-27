@@ -20,7 +20,7 @@ Cerințe:
 """
 
 
-def gaseste_unic_I(istoric):
+def gaseste_unic_1(istoric):
     """Găsește elementul unic.
 
     Funcția primește o listă cu elemente numerice și trebuie
@@ -33,17 +33,21 @@ def gaseste_unic_I(istoric):
 
     dfreq = {}  # dictionar de frecvente
     for element in istoric:
-        if dfreq.has_key(element - 1):  # incercam sa gasim indexul elementului in dictionarul de frecventa
-            dfreq[element - 1] += 1  # elementul exista, deci incrementam numarul de aparitii
+        # incercam sa gasim indexul elementului in dictionarul de frecventa
+        if element-1 in dfreq:
+            # elementul exista, deci incrementam numarul de aparitii
+            dfreq[element - 1] += 1
         else:  # cand elementul nu este gasit, il adaugam
-            dfreq[element - 1] = 1  # adaugam 1 in pozitia corespunzatoare din dictionarul de frecventa
+            # adaugam 1 in pozitia corespunzatoare din dictionarul de frecventa
+            dfreq[element - 1] = 1
 
     for element in istoric:
-        if dfreq[element - 1] % 2 != 0:  # daca elementul apare de un numar impar de ori
+        # daca elementul apare de un numar impar de ori
+        if dfreq[element - 1] % 2 != 0:
             return element  # acela este elementul unic
 
 
-def gaseste_unic_II(istoric):
+def gaseste_unic_2(istoric):
     """Găsește elementul unic.
 
     Funcția primește o listă cu elemente numerice și trebuie
@@ -61,8 +65,8 @@ def gaseste_unic_II(istoric):
     return unic  # ramane elementul unic
 
 if __name__ == "__main__":
-    assert gaseste_unic_I([1, 2, 3, 2, 1]) == 3
-    assert gaseste_unic_I([1, 1, 1, 2, 2]) == 1
+    assert gaseste_unic_1([1, 2, 3, 2, 1]) == 3
+    assert gaseste_unic_1([1, 1, 1, 2, 2]) == 1
 
-    assert gaseste_unic_II([1, 2, 3, 2, 1]) == 3
-    assert gaseste_unic_II([1, 1, 1, 2, 2]) == 1
+    assert gaseste_unic_2([1, 2, 3, 2, 1]) == 3
+    assert gaseste_unic_2([1, 1, 1, 2, 2]) == 1

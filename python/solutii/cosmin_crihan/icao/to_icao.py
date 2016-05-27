@@ -35,35 +35,46 @@ def icao(mesaj):
     """
 
     try:
-        fisier = open(mesaj, "r")  # deschidem fisierul pentru citirea mesajului
+        # deschidem fisierul pentru citirea mesajului
+        fisier = open(mesaj, "r")
         msg = fisier.read()  # punem mesajul din fisier intr-o variabila
         fisier.close()
     except IOError:
-        print("Nu s-a putut deschide fisierul cu mesajul!")
+        print "Nu s-a putut deschide fisierul cu mesajul!"
         return
 
     try:
-        fisier_icao = open("mesaj.icao", "w")  # deschidem fisierul pentru scrierea mesajului criptat
+        # deschidem fisierul pentru scrierea mesajului criptat
+        fisier_icao = open("mesaj.icao", "w")
     except IOError:
-        print("Nu s-a putut deschide fisierul de iesire!")
+        print "Nu s-a putut deschide fisierul de iesire!"
         return
 
-    chr_vechi = msg[0]
-    for chr in msg:  # parcurgem caracter cu caracter
-        if chr in " .,;:?!":  # semnele de punctuatie nu le luam in considerare
-            if chr_vechi in " .,;:?!":
-                fisier_icao.write(chr + "\n")  # daca s-a intalnit un astfel de caracter special, il scriem pe o linie separata
-                # cazul cand exista cel putin 2 caractere speciale unul dupa altul
+    caracter_vechi = msg[0]
+    for caracter in msg:  # parcurgem caracter cu caracter
+        # semnele de punctuatie nu le luam in considerare
+        if caracter in " .,;:?!":
+            if caracter_vechi in " .,;:?!":
+                # daca s-a intalnit un astfel de caracter special,
+                # il scriem pe o linie separata
+                caractere_de_scris = [caracter, "\n"]
+                fisier_icao.write("".join(caractere_de_scris))
+                # cazul cand exista cel putin 2 caractere speciale
+                # unul dupa altul
             else:
-                fisier_icao.write("\n" + chr + "\n")
+                caractere_de_scris = ["\n", caracter, "\n"]
+                fisier_icao.write("".join(caractere_de_scris))
                 # cazul cand exista doar un caracter special intre 2 cuvinte
-        elif chr == '\n':  # trecem la linie noua
+        elif caracter == '\n':  # trecem la linie noua
             fisier_icao.write("\n")
 
-        if 'a' <= chr <= 'z':  # caracterul este litera
-            fisier_icao.write(ICAO[chr] + ", ")  # scriem codificarea ICAO si separam litera de urmatoarea prin virgula
+        if 'a' <= caracter <= 'z':  # caracterul este litera
+            # scriem codificarea ICAO
+            # si separam litera de urmatoarea prin virgula
+            caractere_de_scris = [ICAO[caracter], ", "]
+            fisier_icao.write("".join(caractere_de_scris))
 
-        chr_vechi = chr
+        caracter_vechi = caracter
 
     fisier_icao.close()
 

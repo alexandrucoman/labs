@@ -35,17 +35,20 @@ def din_icao(mesaj):
     """
 
     try:
-        fisier = open(mesaj, "r")  # deschidem fisierul pentru citirea mesajului criptat ICAO
-        msg = fisier.read().splitlines()  # punem liniile din fisier intr-o lista de string-uri
+        # deschidem fisierul pentru citirea mesajului criptat ICAO
+        fisier = open(mesaj, "r")
+        # punem liniile din fisier intr-o lista de string-uri
+        msg = fisier.read().splitlines()
         fisier.close()
     except IOError:
-        print("Nu s-a putut deschide fisierul cu mesajul ICAO!")
+        print "Nu s-a putut deschide fisierul cu mesajul ICAO!"
         return
 
     try:
-        fisier_initial = open("icao_intrare", "w")  # deschidem fisierul pentru scrierea mesajului initial
+        # deschidem fisierul pentru scrierea mesajului initial
+        fisier_initial = open("icao_intrare", "w")
     except IOError:
-        print("Nu s-a putut deschide fisierul de scriere!")
+        print "Nu s-a putut deschide fisierul de scriere!"
         return
 
     for linie in msg:  # parcurgem fiecare din liniile din fisier
@@ -57,8 +60,10 @@ def din_icao(mesaj):
             cuvinte_icao = linie.split(", ")  # preluam cuvintele criptate
 
             for cheie in cuvinte_icao:
-                if cheie:  # pentru siguranta: ultimul element dupa split e null
-                    fisier_initial.write(cheie[0])  # punem caracterul decriptat in fisierul de iesire
+                # pentru siguranta: ultimul element dupa split e null
+                if cheie:
+                    # punem caracterul decriptat in fisierul de iesire
+                    fisier_initial.write(cheie[0])
                     # caracterul decriptat va fi prima litera din cheie
 
     fisier_initial.close()
