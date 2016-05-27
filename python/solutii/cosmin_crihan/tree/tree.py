@@ -4,30 +4,40 @@
     Aplicatie care functioneaza asemanator comenzii "tree" din Linux
 """
 
+from __future__ import print_function
 import os
 
 
 def tree(fisier, nivel):
+    """
+        Afiseaza fisierele si folderele existente in directorul curent
+        sub forma de arbore
+    """
     if nivel == 0:
         print(fisier)  # afisam directorul de pe nivelul 0
 
-    fisiere_continute = os.listdir(fisier)  # preluam lista de fisiere / foldere din directorul curent
+    # preluam lista de fisiere / foldere din directorul curent
+    fisiere_continute = os.listdir(fisier)
     fisiere_continute.sort()  # o sortam alfabetic
 
     # parcurgem fisierele / folderele de pe nivelul curent
     for fisier_intern in fisiere_continute:
 
-        # afisam atatea tab-uri cat e valoarea nivelului pe care suntem in arborele de fisiere
-        for i in range(0, nivel):
-            print("\t"),
+        # afisam atatea tab-uri cat e valoarea nivelului
+        # pe care suntem in arborele de fisiere
+        print("\t" * nivel, end='')
 
-        print(unicode(u"├── ")),  # afisam un simbol special pentru a marca "directorul contine"
+        # afisam un simbol special pentru a marca "directorul contine"
+        print(unicode(u"├── "), end='')
         print(fisier_intern)  # afisam numele fisierului / folderului
 
-        fisier_intern_cu_cale=os.path.join(fisier, fisier_intern)  # construim calea completa a fisierului
+        # construim calea completa a fisierului
+        fisier_intern_cu_cale = os.path.join(fisier, fisier_intern)
 
-        if os.path.isdir(fisier_intern_cu_cale):  # daca fisierul este un director
-            tree(fisier_intern_cu_cale, nivel + 1)  # atunci continuam parcurgerea in adancime, pe nivelul urmator
+        # daca fisierul este un director
+        if os.path.isdir(fisier_intern_cu_cale):
+            # atunci continuam parcurgerea in adancime, pe nivelul urmator
+            tree(fisier_intern_cu_cale, nivel + 1)
 
 if __name__ == '__main__':
     tree(".", 0)

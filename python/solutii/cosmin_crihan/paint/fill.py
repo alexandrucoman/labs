@@ -33,9 +33,12 @@ def umple_forma(imagine, punct):
     umple forma respectivă cu caracterul "*"
     """
 
-    # validam coordonatele punctului curent (sa nu depaseasca dimensiunile imaginii)
-    if 0 <= punct[0] <= len(imagine) - 1 and 0 <= punct[1] <= len(imagine[0]) - 1 \
-        and imagine[punct[0]][punct[1]] != "*":  # si sa nu fie "perete" acolo
+    # validam coordonatele punctului curent
+    # (sa nu depaseasca dimensiunile imaginii)
+    if 0 <= punct[0] <= len(imagine) - 1\
+            and 0 <= punct[1] <= len(imagine[0]) - 1\
+            and imagine[punct[0]][punct[1]] != "*":
+            # si sa nu fie "perete" acolo
         imagine[punct[0]][punct[1]] = "*"  # adaugam steluta
         # si apelam recursiv functia de umplere in cele 4 directii
         umple_forma(imagine, (punct[0] - 1, punct[1]))  # STANGA
@@ -45,6 +48,11 @@ def umple_forma(imagine, punct):
 
 
 def afisare_imagine(imaginea):
+    """
+    Afiseaza pe ecran matricea de simboluri primita ca parametru.
+    :param imaginea:
+    :return:
+    """
     for linie in imaginea:
         for element in linie:
             print(element, end='')
@@ -53,6 +61,7 @@ def afisare_imagine(imaginea):
 
 def main():
     """  Main function docstring """
+
     imaginea = [
         ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
         ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
