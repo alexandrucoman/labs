@@ -15,6 +15,37 @@ la n pași de ea în alfabet (unde este n este un număr întreg cunoscut)
 
 from __future__ import print_function
 
+# dictionar de frecvente de utilizare a literelor din alfabetul englez
+# folosit pentru decriptarea cu brute-force
+FREQ_DICT = {
+    'a': 8.167,
+    'b': 1.492,
+    'c': 2.782,
+    'd': 4.253,
+    'e': 12.702,
+    'f': 2.228,
+    'g': 2.015,
+    'h': 6.094,
+    'i': 6.966,
+    'j': 0.153,
+    'k': 0.772,
+    'l': 4.025,
+    'm': 2.406,
+    'n': 6.749,
+    'o': 7.507,
+    'p': 1.929,
+    'q': 0.095,
+    'r': 5.987,
+    's': 6.327,
+    't': 9.056,
+    'u': 2.758,
+    'v': 0.978,
+    'w': 2.361,
+    'x': 0.150,
+    'y': 1.974,
+    'z': 0.074
+}
+
 
 def decripteaza_mesajul(mesaj):
     """Funcția va primi un mesaj criptat folosind cifrul lui Caesar și
@@ -22,6 +53,8 @@ def decripteaza_mesajul(mesaj):
     """
 
     decriptat = []  # mesajul decriptat (lista de caractere)
+    plauzibilitate_maxima = 0
+    decriptat_plauzibil = []
 
     # 26 de litere (mici) posibile in alfabetul englez
     for n_cheie in range(1, 26):
@@ -34,19 +67,30 @@ def decripteaza_mesajul(mesaj):
                 litera_decriptata = chr(index_litera + ord('a'))
             decriptat.append(litera_decriptata)
 
-        print("\nIncercare n=%d:" % n_cheie)
+        print("\nn=%d: " % n_cheie, end='')
 
         for litera in decriptat:
             print(litera, end='')
 
-        # intrebam utilizatorul daca mesajul e lizibil
-        plauzibil = raw_input('\n\nPlauzibil? (da/nu) ')
-        if plauzibil.lower() == "da":
-            break
-        else:
-            decriptat = []
+        # verificam daca sirul decriptat este plauzibil, adica
+        # are cel mai mare scor conform dictionarului de frecvente
+        plauzibilitate = 0
+        for litera in decriptat:
+            if 'a' <= litera <= 'z':
+                # adaugam frecventa de aparitie a literei curente la indicele
+                # de plauzibilitate
+                plauzibilitate += FREQ_DICT[litera]
 
-    return "".join(decriptat)
+        # daca mesajul este cel corect, atunci are un indice maxim
+        if plauzibilitate > plauzibilitate_maxima:
+            plauzibilitate_maxima = plauzibilitate
+            decriptat_plauzibil = decriptat
+
+        decriptat = []
+
+    print("\n\nCel mai plauzibil mesaj "
+          "este: %s" % "".join(decriptat_plauzibil))
+    return "".join(decriptat_plauzibil)
 
 
 def decripteaza_mesajul_n(mesaj, n_cheie):
@@ -88,6 +132,7 @@ def main():
     i = 1
     for mesaj in mesaje.splitlines():
         if i == 1:  # primul mesaj il decriptam prin incercari
+            print("Primul mesaj decriptat prin incercari:")
             mesaje_decriptate.write("%s\n" % decripteaza_mesajul(mesaj))
         else:
             # urmatoarele mesaje le decriptam prin formula:
