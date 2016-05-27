@@ -19,7 +19,6 @@ Cerințe:
     parcurgere a listei și fără a aloca memorie suplimentară.
 """
 
-
 # pylint: disable=unused-argument
 from array import array
 
@@ -34,16 +33,17 @@ def gaseste_unic(istoric):
         1 2 3 2 1 - 3
         1 1 1 2 2 - 1
     """
-    accesari =array('i',(0 for i in range(0,10)))
-    idHardWorker = -1
-    for id in istoric:
-        accesari[id] = accesari[id]+ 1
+    accesari = array('i', (0 for i in range(0, 10)))
+    id_hardworker = -1
+    for index in istoric:
+        accesari[index] = accesari[index] + 1
 
     for index in range(0, len(accesari)):
         if accesari[index] % 2 == 1:
-            idHardWorker = index
-    print (idHardWorker)
-    return idHardWorker
+            id_hardworker = index
+    print (id_hardworker)
+    return id_hardworker
+
 
 def gaseste_unic_2(istoric):
     """Găsește elementul unic.
@@ -61,13 +61,13 @@ def gaseste_unic_2(istoric):
     print type(istoric)
     pass
     """
-    idHardWorker =istoric.pop()
+    id_hardworker = istoric.pop()
     while istoric:
-        idHardWorker^=istoric.pop();
-    print (idHardWorker)
-    return idHardWorker
+        id_hardworker ^= istoric.pop();
+    print (id_hardworker)
+    return id_hardworker
+
 
 if __name__ == "__main__":
-
     assert gaseste_unic_2([1, 2, 3, 2, 1]) == 3
     assert gaseste_unic_2([1, 1, 1, 2, 2]) == 1

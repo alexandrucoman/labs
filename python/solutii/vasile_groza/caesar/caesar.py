@@ -18,47 +18,47 @@ from __future__ import print_function
 
 
 def determina_cheia1(mesaj):
-    for cesarKey in range(0, 26):
-        newMesaj = []
-        #print ("Mesajul original e",mesaj," ",cesarKey)
-        #print (chr(97 + ((ord(mesaj[0]) + cesarKey)-97) % 26))
+    for cesar_key in range(0, 26):
+        new_mesaj = []
 
         for litera in mesaj:
             if litera.isalpha():
-                newMesaj.append((chr(97 + ((ord(litera) + cesarKey)-97) % 26)))
+                new_mesaj.append((chr(97 +
+                                      ((ord(litera) + cesar_key) - 97) % 26)))
             else:
-                newMesaj.append(litera)
-        text="".join(newMesaj)
+                new_mesaj.append(litera)
+        text = "".join(new_mesaj)
         print(text)
         response = raw_input("E buna decriptarea y/n \n")
         if response == "y":
-            word =text.split(" ",2)[0]
+            word = text.split(" ", 2)[0]
             return word
     return -1
-## After determinaton of a first word we search for each key##
 
-def determina_cheia2(mesaj,word):
+
+# After determinaton of a first word we search for each key #
+
+def determina_cheia2(mesaj, word):
     for cesarKey in range(0, 26):
-        newMesaj = []
-        # print ("Mesajul original e",mesaj," ",cesarKey)
-        # print (chr(97 + ((ord(mesaj[0]) + cesarKey)-97) % 26))
-
+        new_mesaj = []
         for litera in mesaj:
             if litera.isalpha():
-                newMesaj.append((chr(97 + ((ord(litera) + cesarKey) - 97) % 26)))
+                new_mesaj.append((chr(97 +
+                                      ((ord(litera) + cesarKey) - 97) % 26)))
             else:
-                newMesaj.append(litera)
-        text = "".join(newMesaj)
+                new_mesaj.append(litera)
+        text = "".join(new_mesaj)
 
         if text.__contains__(word):
-            print("Mesajul decodificat este:",text)
+            print("Mesajul decodificat este:", text)
             return cesarKey
     return -1
 
+
 def decripteaza_mesajul(mesaj, word):
-    print("mesajul inital este",mesaj)
-    currentKey=determina_cheia2(mesaj, word)
-    print("Key=",currentKey)
+    print("mesajul inital este", mesaj)
+    currentKey = determina_cheia2(mesaj, word)
+    print("Key=", currentKey)
 
 
 def main():
@@ -75,7 +75,7 @@ def main():
     print(word)
     print("INCEPEM DECRIPTAREA!!!!")
     for mesaj in mesaje.splitlines():
-        decripteaza_mesajul(mesaj,word)
+        decripteaza_mesajul(mesaj, word)
 
 
 if __name__ == "__main__":

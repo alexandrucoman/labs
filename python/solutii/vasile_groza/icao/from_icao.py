@@ -29,12 +29,33 @@ ICAO = {
 }
 
 
+def iverse_dictionary(dictionary):
+    inv_map = {v: k for k, v in dictionary.items()}
+    return inv_map
+
 def din_icao(mesaj):
     """Funcția va primi calea către fișierul ce conține mesajul brut și
     va genera un fișier numit icao_intrare ce va conține mesajul inițial.
     """
-    pass
+    try:
+        fisier = open(mesaj, "r")
+        mesaje = fisier.read()
+        fisier.close()
+    except IOError:
+        print("Nu am putut obține mesajele.")
+        return
 
 
+    fisier_output = open("icao_intrare", "w")
+
+    inv_map = iverse_dictionary(ICAO)
+    for linie in mesaje.splitlines():
+        new_mesaj =""
+        for word in linie.split(" "):
+            new_mesaj=new_mesaj+(inv_map.get(word))
+        new_mesaj=new_mesaj+"\n"
+        fisier_output.write(new_mesaj)
+
+    fisier_output.close()
 if __name__ == "__main__":
     din_icao("mesaj.icao")
