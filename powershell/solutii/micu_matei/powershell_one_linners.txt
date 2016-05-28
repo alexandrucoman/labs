@@ -1,0 +1,8 @@
+1. List top five cpu hungry procesess :)
+get-process | sort-object - descending cpu | selet -first 5
+2. Get a list of all ipv4 adresses on my system
+3. Count the number of subfolders a folder has
+(get-childitem -Path c:\temp -recurse | where-object { $_.PSIsContainer }).Count
+4. Display all .txt files in a folder including subfolders
+(get-childitem -recurse | where-object { $_.name.tolower().endswith(".txt") }).Count
+5. Calculate ocupied space by all the files in a folder + subfolders
