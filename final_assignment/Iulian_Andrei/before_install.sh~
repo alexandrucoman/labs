@@ -1,0 +1,24 @@
+#!/bin/bash
+
+mysource=$1
+destination=$2
+
+echo $mysource
+echo $destination
+echo "$destination"
+
+if [[ -z "$destination" ]]; then
+    echo "No directory parameter"
+    echo "No directory parameter" >> info.log
+    exit
+fi
+
+if [[ ! -d "$destination" ]]; then
+    echo "Wrong directory parameter"
+    exit
+fi
+
+echo "Succes with directory"
+wget -O $destination $mysource
+
+echo "Download completed to specified directory" >> info.log
