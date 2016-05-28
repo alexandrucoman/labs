@@ -1,0 +1,69 @@
+{
+  "before_install": [
+    {
+      "download": {
+        "source": "http://localhost:8080/file",
+        "destination": "/home/lordusmd/script.sh"
+      }
+    }
+  ],
+  "install": [
+    {
+      "run_script": {
+        "attempts": 3,
+        "check_exit_code": "True",
+        "command": "bash /home/lordusmd/script.sh",
+        "cwd": "/home/lordusmd/",
+        "env_variables": {
+          "tuxy": "Tuxy Pinguinescu",
+          "tuxy1": "Tuxy Pinguinescu",
+          "tuxy2": "Tuxy Pinguinescu"
+        },
+        "retry_interval": 1,
+        "shell": "True"
+      }
+    }
+  ],
+  "after_install": [
+    {
+      "reboot": {
+        "method": "soft"
+      }
+    }
+  ],
+  "install_failed": [
+    {
+      "delete": {
+        "method": "force",
+        "path": "/home/lordusmd/will_be"
+      }
+    },
+    {
+      "shutdown": {
+        "method": "hard"
+      }
+    }
+  ],
+  "config": {
+    "hostname": "TuxyNode-1",
+    "users": {
+      "acoman": {
+        "full_name": "lordusmdandru Coman",
+        "primary-group": "admin",
+        "groups": [
+          "users"
+        ],
+        "expiredate": "2016-09-01",
+        "password": ""
+      }
+    },
+    "write_files": {
+      "0": {
+        "path": "/home/lordusmd/test",
+        "permissions": "0555",
+        "encoding": "gzip",
+        "content": ""
+      }
+    }
+  }
+}
