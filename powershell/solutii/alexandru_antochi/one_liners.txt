@@ -1,0 +1,9 @@
+1. Get-Process | Sort-Object CPU -desc | Select-Object -first 5
+
+2. Get-NetIPAddress | Where-Object {$_.AddressFamily -eq 'IPv4'} | Format-Table
+
+3. (Get-ChildItem -r -directory).count
+
+4. Get-ChildItem -r -file | Where-Object {$_.Name -like "*.txt"}
+
+5. (Get-ChildItem -r -file | Measure-Object -property Length -sum).sum/1mb
