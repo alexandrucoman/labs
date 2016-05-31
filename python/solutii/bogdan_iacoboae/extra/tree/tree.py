@@ -1,4 +1,6 @@
 import os
+import tkFileDialog
+
 
 def list_files(locatie):
     for root, dirs, files in os.walk(locatie):
@@ -10,4 +12,5 @@ def list_files(locatie):
             print '[FILE]|%s%s' % (spatiu2,fisier)
 
 if __name__ == "__main__":
-    list_files("D:\FACULTATE\CloudBase\labs\python\solutii\/bogdan_iacoboae\/extra")
+    foldername= tkFileDialog.askdirectory()
+    list_files(foldername)
