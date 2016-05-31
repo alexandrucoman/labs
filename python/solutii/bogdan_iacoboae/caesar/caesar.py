@@ -1,5 +1,4 @@
-# coding=utf-8
-# from __future__ import print_function
+from __future__ import print_function
 
 
 def afla_pasul(mesaj):
@@ -23,14 +22,14 @@ def decripteaza_mesajul(mesaj,fisier):
     for index in mesaj:
         if index==".":
             if puncte == 1 :
-                print ".\n"
+                print(".\n")
                 fisier.write("\n")
             else:
                 puncte = puncte +1
-                print ".",
+                print(".", end='')
                 fisier.write(".")
         else:
-            print real_letter(index,key),
+            print(real_letter(index,key),end='')
             fisier.write(real_letter(index,key))
 
 
