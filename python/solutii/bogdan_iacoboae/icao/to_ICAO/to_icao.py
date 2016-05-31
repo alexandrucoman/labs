@@ -22,4 +22,3 @@ def icao(mesaj):
 
 if __name__ == "__main__":
     icao("Long live python")
-    
