@@ -1,5 +1,6 @@
 __author__ = 'kali'
 
+
 def verifica_expresia(paranteze):
     lista = []
     for index in paranteze:
@@ -18,8 +19,7 @@ def verifica_expresia(paranteze):
 
 if __name__ == "__main__":
     input = raw_input("Give me your parenthesis : ")
-    if verifica_expresia(input) == True :
+    if verifica_expresia(input) == True:
         print "Parantezele au fost puse bine"
     else:
         print "Parantezele nu au fost puse bine"
-
