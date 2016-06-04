@@ -1,0 +1,1 @@
+Scrieti o functie ce sa determine daca numarul primit ca argument este o putere a lui 2.
