@@ -1,4 +1,5 @@
-from __future__ import print_function
+# coding=utf-8
+# from __future__ import print_function
 
 
 def afla_pasul(mesaj):
@@ -10,28 +11,28 @@ def afla_pasul(mesaj):
 def real_letter(character, key):
     if character.isalpha():
         character = ord(character)-key
-        if character<ord('a'):
-            character=ord('z')-abs(ord('a')-character)+1 #122 - abs(97 -  [unicode character]) + 1
+        if character < ord('a'):
+            character = ord('z') - abs(ord('a') - character) + 1
         return chr(character)
     else:
         return character
 
-def decripteaza_mesajul(mesaj,fisier):
+
+def decripteaza_mesajul(mesaj, fisier):
     key = afla_pasul(mesaj)
     puncte = 0.
     for index in mesaj:
-        if index==".":
-            if puncte == 1 :
-                print(".\n")
+        if index == ".":
+            if puncte == 1:
+                print ".\n"
                 fisier.write("\n")
             else:
-                puncte = puncte +1
-                print(".", end='')
+                puncte = puncte + 1
+                print ".",
                 fisier.write(".")
         else:
-            print(real_letter(index,key),end='')
-            fisier.write(real_letter(index,key))
-
+            print real_letter(index, key),
+            fisier.write(real_letter(index, key))
 
 
 def main():
@@ -46,7 +47,7 @@ def main():
         return
 
     for mesaj in mesaje.splitlines():
-        decripteaza_mesajul(mesaj,towrite)
+        decripteaza_mesajul(mesaj, towrite)
 
 if __name__ == "__main__":
     main()
