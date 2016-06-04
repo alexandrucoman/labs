@@ -9,11 +9,11 @@ ICAO = {
 
 
 def icao(mesaj):
-    file=open('mesaj.icao','w')
+    file = open('mesaj.icao', 'w')
     mesaj = mesaj.lower()
-    for cuvant in mesaj.split() :
-        for litera in cuvant :
-            word=ICAO[litera]
+    for cuvant in mesaj.split():
+        for litera in cuvant:
+            word = ICAO[litera]
             file.write(word,)
             file.write(" ")
         file.write("\n")
