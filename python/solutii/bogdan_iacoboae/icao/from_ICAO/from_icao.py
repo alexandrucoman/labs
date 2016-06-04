@@ -10,14 +10,14 @@ ICAO = {
 
 def din_icao(forDecode, decoded):
     try:
-        fisier= open(forDecode,'r')
-        toDecode=fisier.read()
+        fisier = open(forDecode, 'r')
+        toDecode = fisier.read()
         fisier.close()
     except IOError:
         print "File does not exist"
         return
 
-    decoded=open(decoded,"w")
+    decoded = open(decoded, "w")
     for linie in toDecode.splitlines():
         for cuvant in linie.split():
             decoded.write(cuvant[0])
@@ -25,4 +25,4 @@ def din_icao(forDecode, decoded):
     decoded.close()
 
 if __name__ == "__main__":
-    din_icao("mesaj.icao","decodat.icao")
+    din_icao("mesaj.icao", "decodat.icao")
