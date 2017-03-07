@@ -1,0 +1,53 @@
+/*
+Sa nu se foloseasca w3school
+
+Selector {
+background.color: red;
+......
+}
+
+.cls1{... }
+#p1 {...}
+
+selectorii pot fi separati prin ","
+
+p,h1 {} -> ambele au aceleasi stiluri
+p h1{} -> subordonare <=> p>h1 (h1 tb sa fie copilul lui p)
+
+
+p: nth-child(2n| odd| 3|2n-1) -> va cauta in arbore copiii care respecta regula din paranteza
+*/
+
+
+
+#chess_board { border:5px solid #333; }
+tr:nth-child(2) td:before, tr:nth-child(7) td:before{
+    content: "p";
+      }
+#A1:before, #A8:before, #H1:before, #H8:before {
+    content: "T";
+}
+
+
+#chess_board td {
+    background:#fff;
+    background:-moz-linear-gradient(top, #fff, #eee);
+    background-color:chartreuse;
+    box-shadow:inset 0 0 0 1px #fff;
+    -moz-box-shadow:inset 0 0 0 1px #fff;
+    -webkit-box-shadow:inset 0 0 0 1px #fff;
+    height:80px;
+    text-align:center;
+    vertical-align:middle;
+    width:80px;
+}
+
+#chess_board tr:nth-child(odd) td:nth-child(even),
+#chess_board tr:nth-child(even) td:nth-child(odd) {
+    background:#ccc;
+    background:-moz-linear-gradient(top, #ccc, #eee);
+    background-color:mediumblue;
+    box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+    -moz-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+    -webkit-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+}
