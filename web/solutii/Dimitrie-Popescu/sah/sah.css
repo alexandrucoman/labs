@@ -1,0 +1,27 @@
+table
+{
+	border: ridge 10px;
+	font-size: medium;
+	font-weight: bold;
+	width: 200px;
+	margin: auto;
+	
+}
+td 
+{
+	width:25px;
+	height:25px;
+	text-align: center;
+}
+.black
+{
+	background: black;
+	color:white;
+	
+}
+.t::after{
+content: "\2656";
+}
+.p::after{
+content: "\265F";
+}
