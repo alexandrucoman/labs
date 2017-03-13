@@ -1,0 +1,23 @@
+#tictactoe {
+border: 10px solid black;
+background: white;
+}
+
+td{
+width: 100px;
+height: 100px;
+font-size: 75px;
+text-align: center;
+}
+
+table td, table th {
+    border: 1px solid black;
+}
+
+.x_square {
+color: red;
+}
+
+.zero_square {
+color: blue;
+}
