@@ -1,0 +1,38 @@
+body {
+    background-color: black;
+    color: red;
+}
+
+h1 {
+    font-family: Verdana ;
+    text-align: center;
+}
+
+ul{
+    color:white;
+    list-style-type: none;
+    border-left: 5px solid darkred;
+}
+
+a{
+    font-size: larger;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+a:hover {
+    background-color: lightseagreen;
+    display: inline-block;
+}
+
+a:active {
+    color: hotpink;
+}
+
+p{
+    text-align: justify;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 9px;
+}
