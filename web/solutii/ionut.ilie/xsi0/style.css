@@ -1,0 +1,11 @@
+table {
+    border: 2px solid red;
+    border-radius: 8px;
+}
+td {
+	border: 2px solid red;
+    border-radius: 8px;
+    text-align: center;
+    width: 5em;
+    height: 5em;
+}
