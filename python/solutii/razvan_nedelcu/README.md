@@ -1,0 +1,1 @@
+Solutiile la exercitiile oferite la training-ul de la cloudbase.
