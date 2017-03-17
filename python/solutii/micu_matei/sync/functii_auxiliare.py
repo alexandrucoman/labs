@@ -40,8 +40,8 @@ def get_last_edit(path):
 
 
 def write_sync_file(path, data):
-    """ Scrie informatiile in fisieri .sync la pathul dat"""
-    path = os.path.join(path, ".sync")
+    """ Scrie informatiile in fisieri .sync_unidirectional la pathul dat"""
+    path = os.path.join(path, ".sync_unidirectional")
     try:
         sync_file = open(path, "wb")
         pickle.dump(data, sync_file)
@@ -52,7 +52,7 @@ def write_sync_file(path, data):
 
 def read_sync_file(path):
     """ returneaza informatiile din fisierul de sicronizare """
-    path = os.path.join(path, ".sync")
+    path = os.path.join(path, ".sync_unidirectional")
     try:
         sync_file = open(path, "rb")
         data = pickle.load(sync_file)

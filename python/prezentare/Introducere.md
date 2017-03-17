@@ -930,7 +930,7 @@ open(name[, mode[, buffering]])
 ---
 
 # for
-    !pyhon
+    !python
     >>> numbers = range(1, 10)
     >>> numbers
     [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -950,7 +950,7 @@ open(name[, mode[, buffering]])
 --- 
 
 # for
-    !pyhon
+    !python
     >>> number = 0
     >>> while number < 10:
     ...     print("The number is %d" % number)
