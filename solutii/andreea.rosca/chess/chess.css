@@ -1,0 +1,104 @@
+body {
+	background:#20B2AA;
+	padding: 20px;
+}
+table {
+	width:500px;
+	height:500px;
+	border:4px solid #0000CD;
+	background-color:#8B0000;
+	 top: 40%;
+	}
+
+td {
+    width: 40px; height: 40px;
+}
+h1 {
+	font-size: 40px;
+	font-family: "Times New Roman", Times, serif;
+    color:#FFFF00;
+}
+h2 { 
+    font-size: 20px;
+	font-family: "Times New Roman", Times, serif;
+  }
+
+
+h3 {
+	font-size: 30px;
+	font-family: "Times New Roman", Times, serif;
+    color:#FFFF00;
+}
+
+tr:nth-child(odd) td:nth-child(even), tr:nth-child(even) td:nth-child(odd) {
+	background: white;
+}
+
+a:visited {
+    color:#9400D3;
+}
+a:hover {
+	color:hotpink;
+}
+
+#green {
+	color:#008000;
+	font-size: 30px;
+	
+	}
+#blue {
+	color:#0000CD;
+	font-size:30px;
+}
+	.myButton {
+
+
+	-moz-box-shadow: 1px 5px 9px 1px #1c1b18;
+	-webkit-box-shadow: 1px 5px 9px 1px #1c1b18;
+	box-shadow: 1px 5px 9px 1px #1c1b18;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
+	background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-webkit-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-ms-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eae0c2', endColorstr='#ccc2a6',GradientType=0);
+	background-color:#eae0c2;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:15px 18px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.center{
+	text-align: center;
+
+}
+.top {
+    border: 1px solid black;
+    background-color: lightblue;
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-bottom: 70px;
+    padding-left: 50px;
+}
+.modButtom{
+	margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right:10px;
+    margin-left: 10px;
+}
+
+
+
+
+
