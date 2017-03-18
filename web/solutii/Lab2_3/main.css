@@ -1,0 +1,15 @@
+table {
+    width: 50%;
+}
+
+td {
+    height: 50px;
+    vertical-align: bottom;
+}
+ tr:nth-child(odd) td:nth-child(even){ background-color:BLACK }
+ tr:nth-child(even) td:nth-child(odd) { background-color:BLACK }
+ tr:nth-child(2) td:after {content:"\2659";color:BLUE;font-size:60px;}
+ tr:nth-child(7) td:after {content:"\265F";color:RED;font-size:60px;}
+
+ 
+ 
