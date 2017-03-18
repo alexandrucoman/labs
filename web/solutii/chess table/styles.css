@@ -1,0 +1,21 @@
+tr:nth-child(2n-1) td:nth-child(2n-1){
+    background-color: gray;
+    width: 100px;
+    height:100px;
+}
+
+tr:nth-child(2n) td:nth-child(2n) {
+	background-color: gray;
+	width: 100px;
+	height: 100px;
+}
+
+td {
+    text-align: center;
+    font-size: 65px;
+}
+
+table{
+    margin: auto;
+    border: solid black;
+}
