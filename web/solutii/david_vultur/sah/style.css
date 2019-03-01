@@ -1,0 +1,42 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 1050px;
+    min-height: 94vh;
+    margin: auto;
+}
+.tabla-sah {
+    display: block;
+    margin: 25px auto;
+    width: 600px;
+    height: 600px;
+    background: #444;
+    border: 2px solid #333;
+}
+.tabla-sah .element{
+    width: 75px;
+    height: 75px;
+    display: block;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tabla-sah .element:nth-child(16n+1),
+.tabla-sah .element:nth-child(16n+3),
+.tabla-sah .element:nth-child(16n+5),
+.tabla-sah .element:nth-child(16n+7),
+.tabla-sah .element:nth-child(16n+10),
+.tabla-sah .element:nth-child(16n+12),
+.tabla-sah .element:nth-child(16n+14),
+.tabla-sah .element:nth-child(16n+16)
+{
+    background: #fff;
+}
+
+
+.tabla-sah img.piesa {
+    width: 75%;
+}
